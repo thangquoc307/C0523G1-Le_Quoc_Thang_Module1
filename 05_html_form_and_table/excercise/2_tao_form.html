@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo Form Đơn Giản</title>
+</head>
+<body>
+<form method="get">
+<div style="width: 768px; background-color: lightgrey" align="center">
+  <div style="width: 760px; background-color: orange"; align="center">
+  <H3>SỞ THÍCH CỦA BẠN</H3>
+  </div>
+<table>
+  <tr>
+    <td>Họ và tên</td>
+    <td><input name="hvt" type="text" required></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input name="email" type="text" required></td>
+  </tr>
+  <tr>
+    <td>Sở thích</td>
+    <td><table>
+      <tr>
+        <td><label id="thethao"><input id="thethao" name="thethao" value="thethao" type="checkbox">thể thao</label></td>
+        <td><label id="amnhac"><input id="amnhac" name="amnhac" value="amnhac" type="checkbox">âm nhạc</label></td>
+        <td><label id="docsach"><input id="docsach" name="docsach" value="docsach" type="checkbox">đọc sách</label></td>
+      </tr>
+      <tr>
+        <td><label id="luotw"><input id="luotw" name="luotw" value="luotw" type="checkbox">lướt web</label></td>
+        <td><label id="game"><input id="game" name="game" value="game" type="checkbox">chơi game</label></td>
+        <td><label id="dienanh"><input id="dienanh" name="dienanh" value="dienanh" type="checkbox">điện ảnh</label></td>
+      </tr>
+      <tr>
+        <td><label id="dulich"><input id="dulich" name="dulich" value="dulich" type="checkbox">du lịch</label></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <input type="submit" value="Gửi thông tin">
+      <input type="reset" value="Nhập lại">
+    </td>
+  </tr>
+</table>
+</div>
+  <div style="width: 768px; background-color: lightgrey" align="left">
+  <div style="width: 768px; background-color: orange"; align="left">
+    <H3>ĐĂNG KÍ HỌC VIÊN</H3>
+  </div>
+    <table>
+      <tr>
+        <td>Họ và tên</td>
+        <td><input name="hvt2" type="text"></td>
+      </tr>
+      <tr>
+        <td>Ngày sinh</td>
+        <td><input name="ngaysinh" type="date"></td>
+      </tr>
+      <tr>
+        <td>Giới tính</td>
+        <td>
+          <label><input name="gt" type="radio" checked value="Nam">Nam</label>
+          <label><input name="gt" type="radio" value="Nu">Nữ</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Địa chỉ</td>
+        <td><textarea cols="40" rows="4"></textarea></td>
+      </tr>
+      <tr>
+        <td>Lớp</td>
+        <td><select>
+          <option>--- Chọn lớp ---</option>
+          <option>Lớp A</option>
+          <option>Lớp B</option>
+          <option>Lớp C</option>
+          <option>Lớp D</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input name="email" type="email"></td>
+      </tr>
+      <tr>
+        <td>Số điện thoại</td>
+        <td><input name="sdt" type="tel"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Gửi thông tin">
+          <input type="reset" value="Nhập lại">
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+</body>
+</html>
