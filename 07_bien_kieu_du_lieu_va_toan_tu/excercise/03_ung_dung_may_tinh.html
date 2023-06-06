@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ung dung may tinh</title>
+
+</head>
+<body>
+<h3>Calculator</h3>
+<table>
+  <tr>
+    <td><input name="a" type="number" id="a" style="width: 100px"></td>
+    <td><input name="b" type="number" id="b" style="width: 100px"></td>
+    <td style="width: 200px"><div id="kq"></div></td>
+  </tr>
+  <tr>
+    <th><input name="cong" type="submit" id="cong" value="(+) Addition" onclick="co()"></th>
+    <th><input name="tru" type="submit" id="tru" value="(-) Subtraction" onclick="tr()"></th>
+  </tr>
+  <tr>
+    <th><input name="nhan" type="submit" id="nhan" value="(x) Multiplication" onclick="nh()"></th>
+    <th><input name="chia" type="submit" id="chia" value="(/) Division" onclick="ch()"></th>
+  </tr>
+</table>
+</body>
+</html>
+<script>
+
+  function co(){
+    ai = parseInt(document.getElementById("a").value)
+    bi = parseInt(document.getElementById("b").value)
+    document.getElementById("kq").innerHTML = ai + bi
+  }
+  function tr(){
+    ai = parseInt(document.getElementById("a").value)
+    bi = parseInt(document.getElementById("b").value)
+    document.getElementById("kq").innerHTML = ai - bi
+  }
+  function nh(){
+    ai = parseInt(document.getElementById("a").value)
+    bi = parseInt(document.getElementById("b").value)
+    document.getElementById("kq").innerHTML = ai * bi
+  }
+  function ch(){
+    ai = parseInt(document.getElementById("a").value)
+    bi = parseInt(document.getElementById("b").value)
+    document.getElementById("kq").innerHTML = ai / bi
+  }
+
+</script>
