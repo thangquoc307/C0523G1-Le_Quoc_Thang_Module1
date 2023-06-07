@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính hoa hồng bán hàng</title>
+</head>
+<body>
+<h3>Hoa hồng bán hàng</h3>
+<!--5% nếu doanh thu 100tr-->
+<!--7% nếu doanh thu 110tr-->
+<!--10% nếu trên 110tr-->
+<input type="number" id="dt" placeholder="Doanh thu trong tháng"> triệu VND
+<br>
+<button onclick="check()">Kiểm tra</button>
+<p id="kq"></p>
+<script>
+  function check(){
+    n = parseFloat(document.getElementById("dt").value)
+    if (n>110){
+      tex = n*10/100
+    }
+    else if (n>100){
+      tex = n*7/100
+    }
+    else{
+      tex = n*5/100
+    }
+    document.getElementById("kq").innerText = "Hoa hồng tháng này là: " + tex + " triệu"
+  }
+</script>
+</body>
+</html>
