@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chuyển từ met sang feet</title>
+</head>
+<body>
+<input type="number" id="m"> (m)
+<br>
+<input type="button" onclick="change()" value="change">
+<p><span id="f"></span> (feet)</p>
+<script>
+  function change(){
+    m = parseFloat(document.getElementById("m").value);
+    f = m * 3.2808;
+    document.getElementById("f").innerHTML = f;
+  }
+</script>
+</body>
+</html>
