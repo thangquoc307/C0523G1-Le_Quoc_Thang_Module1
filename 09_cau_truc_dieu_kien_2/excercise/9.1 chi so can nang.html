@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính chỉ ố BMI</title>
+</head>
+<body>
+<script>
+  a = prompt("cho xin cái chiều cao (cm)")
+  b = prompt("cho xin cái cân nặng (kg)")
+
+  a = parseInt(a)/100
+  b = parseInt(b)
+  bmi = b/Math.pow(a,2)
+
+  if (bmi <18.5){
+    alert("ốm vãi")
+  }
+  else if (bmi <25){
+    alert("cũng thường")
+  }
+  else if (bmi <30){
+    alert("hơi mập")
+  }
+  else {
+    alert("mập vãi")
+  }
+
+
+</script>
+</body>
+</html>
