@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm số lớn nhất</title>
+</head>
+<body>
+<input id="a" type="number" placeholder="nhập số thứ 1"><br>
+<input id="b" type="number" placeholder="nhập số thứ 2"><br>
+<input id="c" type="number" placeholder="nhập số thứ 3"><br>
+<input type="button" onclick="ss()" value="So sánh">
+
+<script>
+  function ss(){
+  a = parseFloat(document.getElementById("a").value)
+  b = parseFloat(document.getElementById("b").value)
+  c = parseFloat(document.getElementById("c").value)
+  
+  if (a>=b){
+    if (a>=c){
+      max = a
+    }else {
+      max = c
+    }
+  }
+  else {
+    if (b>=c){
+      max = b
+    }else {
+      max = c
+    }
+  }
+  alert("Số lớn nhất là : " + max)
+  }
+</script>
+</body>
+</html>
