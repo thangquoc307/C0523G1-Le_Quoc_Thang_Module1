@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xếp hạng học lực</title>
+    <style>
+        input.diem{
+        width: 100px;
+        }
+        th, td{
+            border: black solid 1px;
+            }
+        td.stt{
+            text-align: center;
+        }
+        td.ten{
+            text-align: left;
+        }
+        td.diem{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h3>BẢNG ĐIỂM HỌC SINH</h3>
+<table style="border-collapse: collapse">
+    <tr>
+        <th style="width: 50px">Stt</th>
+        <th style="width: 150px">Tên học sinh</th>
+        <th>KT miệng x1</th>
+        <th>Giữa kì x2</th>
+        <th>Cuối kì x3</th>
+        <th style="width: 150px">Danh hiệu thi đua</th>
+    </tr>
+    <tr>
+        <td class="stt">1</td>
+        <td class="ten"><input type="text"></td>
+        <td class="diem"><input type="number" id="ktm1" class="diem"></td>
+        <td class="diem"><input type="number" id="gk1" class="diem"></td>
+        <td class="diem"><input type="number" id="ck1" class="diem"></td>
+        <td class="diem" id="kq1"><input type="button" value="check" id="dh1" onclick="tt(
+            document.getElementById('ktm1').value, document.getElementById('gk1').value, document.getElementById('ck1').value
+        , 'kq1')"></td>
+    </tr>
+    <tr>
+        <td class="stt">2</td>
+        <td class="ten"><input type="text"></td>
+        <td class="diem"><input type="number" id="ktm2" class="diem"></td>
+        <td class="diem"><input type="number" id="gk2" class="diem"></td>
+        <td class="diem"><input type="number" id="ck2" class="diem"></td>
+        <td class="diem" id="kq2"><input type="button" value="check" id="dh2" onclick="tt(
+            document.getElementById('ktm2').value, document.getElementById('gk2').value, document.getElementById('ck2').value
+        ,    'kq2')"></td>
+    </tr>
+</table>
+
+<script>
+    function tt(ktm,gk,ck,id){
+    k = (parseFloat(ktm)*1 + parseFloat(gk)*2 + parseFloat(ck)*3)/6
+        if (k >=8.5){
+            dhhs = "học sinh giỏi"
+        }
+        else if (k >= 7.0){
+            dhhs = "học sinh khá"
+        }
+        else if (k >= 5.5){
+            dhhs = "học sinh trung bình"
+        }
+        else if (k > 4.0){
+            dhhs = "học sinh yếu"
+        }
+        else {
+            dhhs = "học sinh kém"
+        }
+        document.getElementById(id).innerText = dhhs
+        alert(k)
+    }
+</script>
+</body>
+</html>
