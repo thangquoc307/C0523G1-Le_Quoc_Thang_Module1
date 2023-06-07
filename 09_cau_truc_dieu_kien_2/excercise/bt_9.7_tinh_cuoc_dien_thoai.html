@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính cước điện thoại</title>
+</head>
+<body>
+<!--Phí thuê bao bắt buộc là 25 nghìn.-->
+<!--600 đồng cho mỗi gọi của 50 phút đầu tiên.-->
+<!--400 đồng cho mỗi phút gọi đến 150 phút tiếp theo.-->
+<!--200 đồng cho bất kỳ mỗi phút nào sau 150 phút đầu tiên.-->
+<script>
+  a = prompt("Thời gian gọi điện (phút)")
+  if (a <= 50){
+    fee = 25000 + (a)*600
+  }
+  else if (a <=150){
+    fee = 25000 + 50*600 + (a - 50)*400
+  }
+  else {
+    fee = 25000 + 50*600 + 100*400 + (a-150)*200
+  }
+
+  alert("Chi phí cuộc gọi: " + fee + "VND")
+</script>
+</body>
+</html>
