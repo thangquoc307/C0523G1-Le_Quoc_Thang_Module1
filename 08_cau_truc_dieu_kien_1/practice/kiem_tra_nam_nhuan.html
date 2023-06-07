@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra năm nhuận</title>
+</head>
+<body>
+<script>
+  year = prompt("Cho xin số năm đê")
+  a = year % 4 == 0
+  b = year % 100 == 0
+  c = year % 400 == 0
+  d = !(b && !c) && a
+if (d) {
+  alert("Năm " + year + " là năm nhuận")
+}
+else {alert("Năm " + year + " không phải là năm nhuận")
+}
+</script>
+</body>
+</html>
