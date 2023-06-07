@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tinh so ngay trong thang</title>
+</head>
+<body>
+<input id="thang" type="number" placeholder="nhập tháng cần kiểm tra">
+<button type="submit" onclick=tinh()>Tính số ngày</button>
+<br>
+<p id="kq"></p>
+
+<script>
+function tinh(){
+  thang = parseInt(document.getElementById("thang").value)
+
+  switch (thang) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+            ngay = "31"
+          break;
+    case 2:
+            ngay = "28 hoặc 29"
+          break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+            ngay = "30"
+  }
+
+  document.getElementById("kq").innerHTML = "Tháng " +thang+ " có " +ngay+ " ngày"
+
+}
+</script>
+</body>
+</html>
