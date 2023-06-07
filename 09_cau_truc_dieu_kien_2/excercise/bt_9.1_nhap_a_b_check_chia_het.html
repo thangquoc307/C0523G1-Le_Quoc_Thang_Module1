@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kiem tra chia het</title>
+</head>
+<body>
+<input type="number" id="a" placeholder="Nhập số a">
+<input type="number" id="b" placeholder="Nhập số b">
+<input type="button" value="kiểm tra" onclick="check()">
+<script>
+  function check() {
+    a = parseFloat(document.getElementById("a").value)
+    b = parseFloat(document.getElementById("b").value)
+    check = a % b
+    if (check == 0) {
+      str = (a + " chia hết cho " + b)
+    } else {
+      str = (a + " không chia hết cho " + b)
+    }
+    alert(str)
+  }
+</script>
+</body>
+</html>
