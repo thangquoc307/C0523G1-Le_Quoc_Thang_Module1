@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>So sánh số nhỏ hay lớn hơn 0</title>
+</head>
+<body>
+<input type="number" id="n">
+<br>
+<input type="button" onclick="ss()" value="So sánh với 0">
+<p id="view"></p>
+<script>
+  function ss(){
+    n = parseFloat(document.getElementById("n").value)
+    if (n>0){
+      s = " lớn hơn"
+    } else if (n==0){
+      s = " bằng"
+    } else {
+      s = " nhỏ hơn"
+    }
+    document.getElementById("view").innerText = "Số " + n + s + " 0"
+  }
+</script>
+</body>
+</html>
