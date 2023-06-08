@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Giải phương trình bậc 1</title>
+  <meta charset="UTF-8">
+  <title>Giải phương trình bậc 2</title>
   <style>
     input{
       width: 30px;
@@ -11,13 +11,15 @@
   </style>
 </head>
 <body>
-<p>Phương trình bậc 1</p>
+<p>Phương trình bậc 2</p>
 <p>
 
-<input type="number" id="a" placeholder="a">
+  <input type="number" id="a" placeholder="a">
+  X<sup>2</sup> +
+  <input type="number" id="b" placeholder="b">
   X +
-<input type="number" id="b" placeholder="b">
-   = 0
+  <input type="number" id="c" placeholder="c">
+  = 0
 </p>
 <input style="width: 100px" type="button" onclick="calculation()" value="Calculation">
 <p id="show"></p>
@@ -26,14 +28,14 @@
   function calculation() {
     a = +document.getElementById("a").value
     b = +document.getElementById("b").value
-    if (a == 0 && b == 0){
-      show = "Phương trình vô số nghiệm"
-    }else if (a == 0 && b != 0){
-      show = "Phương trình vô nghiệm"
-    } else {
-    x = (-b) / a
-      show = "Phương trình có nghiệm là " +x
+    c = +document.getElementById("c").value
+
+    if (a == 0){
+      x = (-c)/b
+      show = "Giá trị của X =" + x
     }
+
+
     document.getElementById("show").innerText = show
   }
 </script>
