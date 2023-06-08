@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi tiết kiệm</title>
+    <style>
+        td{border: black 1px solid}
+        table{border-collapse: collapse}
+        input{width: 200px}
+    </style>
+</head>
+<body>
+<h3>Lãi kép tiết kiệm ngân hàng</h3>
+<table>
+    <tr>
+        <td style="width: 250px">Lượng tiền gởi</td>
+        <td><input type="number" id="pv" onchange="result()"></td>
+    </tr>
+    <tr>
+        <td>Số năm gởi</td>
+        <td><input type="number" id="n" onchange="result()" value="1"></td>
+    </tr>
+    <tr>
+        <td>Thời gian đáo hạn (tháng)</td>
+        <td><input type="number" id="dh" onchange="result()" value="1"></td>
+    </tr>
+    <tr>
+        <td>Lãi suất %</td>
+        <td><input type="number" id="i" onchange="result()"></td>
+    </tr>
+    <tr>
+        <td>Lượng tiền nhận lại ở năm thứ <span id="year" style="color: red">1</span></td>
+        <td><input type="number" id="show" disabled></td>
+    </tr>
+</table>
+<script>
+    function result(){
+        year = +document.getElementById("n").value;
+        pv = +document.getElementById("pv").value;
+        dh = 12 / parseFloat(document.getElementById("dh").value);
+        i = +document.getElementById("i").value/100;
+
+        cur = pv*(1+i/year)**(year*dh)
+
+
+
+        document.getElementById("year").innerText = year;
+        document.getElementById("show").value = cur;
+    }
+
+</script>
+</body>
+</html>
