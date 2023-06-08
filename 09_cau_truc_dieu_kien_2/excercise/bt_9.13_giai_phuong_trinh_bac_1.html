@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc 1</title>
+  <style>
+    input{
+      width: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<p>Phương trình bậc 1</p>
+<p>
+
+<input type="number" id="a" placeholder="a">
+  X +
+<input type="number" id="b" placeholder="b">
+   = 0
+</p>
+<input style="width: 100px" type="button" onclick="calculation()" value="Calculation">
+<p id="show"></p>
+
+<script>
+  function calculation() {
+    a = +document.getElementById("a").value
+    b = +document.getElementById("b").value
+    x = (-b) / a
+    document.getElementById("show").innerText = "Kết quả : X = " + x
+  }
+</script>
+</body>
+</html>

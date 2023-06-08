@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tính diện tích tam giác vuông</title>
+</head>
+<body>
+<input type="number" id="width" placeholder="Nhập vào cạnh dài (m)">
+<br>
+<input type="number" id="height" placeholder="Nhập vào cạnh rộng (m)">
+<input type="button" value="Tính diện tích" onclick="area()">
+<br>
+<p id="show"></p>
+<script>
+  function area(){
+    width = +document.getElementById("width").value
+    height = +document.getElementById("height").value
+    a = width*height/2
+
+    document.getElementById("show").innerText = `Tam giác vuông \n - Cạnh dài : ${width} m \n - Cạnh rộng : ${height} m \n Diện tích : ${a} m2`
+  }
+</script>
+</body>
+</html>
