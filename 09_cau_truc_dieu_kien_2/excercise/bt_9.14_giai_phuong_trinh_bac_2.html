@@ -25,14 +25,30 @@
 <p id="show"></p>
 
 <script>
-  function calculation() {
+  function calculation()  {
     a = +document.getElementById("a").value
     b = +document.getElementById("b").value
     c = +document.getElementById("c").value
 
-    if (a == 0){
+    if (a == 0 && b == 0 && c == 0){
+      show = "Phương trình vô số nghiệm"
+    }else if (a == 0 && b == 0 && c != 0){
+      show = "Phương trình vô nghiệm"
+    }else if (a == 0 && b != 0){
       x = (-c)/b
-      show = "Giá trị của X =" + x
+      show = "Phương trình có 1 nghiệm X = " +x
+    }else {
+      delta = Math.pow(b,2)-4*a*c
+      if (delta<0){
+        show = "Phương trình vô nghiệm"
+      }else if (delta == 0) {
+        x = (-b) / (2 * a)
+        show = "Phương trình có nghiệm kép X1 = X2 = " + x
+      }else {
+        x1 = ((-b)+Math.sqrt(delta))/(2*a);
+        x2 = ((-b)-Math.sqrt(delta))/(2*a);
+        show = `Phương trình có 2 nghiệm \n X1 = ${x1} \n X2 = ${x2}`
+      }
     }
 
 
