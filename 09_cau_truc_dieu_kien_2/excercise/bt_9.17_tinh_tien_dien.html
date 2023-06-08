@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính tiền điện</title>
+</head>
+<body>
+<p>Tổng điện năng tiêu thụ (kWh) : <input type="number" id="diennang"></p>
+<input type="button" onclick="result()" value="Chi phí hóa đơn">
+<p id="show"></p>
+<script>
+  function result(){
+    b1 = 1728;
+    b2 = 1786;
+    b3 = 2074;
+    b4 = 2612;
+    b5 = 2919;
+    b6 = 3015;
+
+    sl1 = 50;
+    sl2 = 50;
+    sl3 = 100;
+    sl4 = 100;
+    sl5 = 100;
+
+    dn = +document.getElementById("diennang").value
+    if (dn <= sl1){
+      fee = dn*b1
+    }else if (dn <= (sl1 + sl2)){
+      fee = sl1*b1 + (dn-sl1)*b2
+    }else if (dn <= (sl1 + sl2 + sl3)){
+      fee = sl1*b1 + sl2*b2 + (dn-sl1-sl2)*b3
+    }else if (dn <= (sl1 + sl2 + sl3 + sl4)){
+      fee = sl1*b1 + sl2*b2 + sl3*b3 + (dn-sl1-sl2-sl3)*b4
+    }else if (dn <= (sl1 + sl2 + sl3 + sl4 + sl5)){
+      fee = sl1*b1 + sl2*b2 + sl3*b3 + sl4*b4 + (dn-sl1-sl2-sl3-sl4)*b5
+    }else{
+      fee = sl1*b1 + sl2*b2 + sl3*b3 + sl4*b4 + sl5*b5 + (dn-sl1-sl2-sl3-sl4-sl5)*b6
+    }
+    document.getElementById("show").innerText = ` Tiền điện trước thuế : ${fee.toFixed()} VND \n Tiền thế GTGT (10%) tiền điện : ${(fee/10).toFixed()} VND \n Tổng cộng tiền thanh toán : ${(fee*1.1).toFixed()} VND`
+  }
+</script>
+</body>
+</html>
