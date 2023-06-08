@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính thuế thu nhập cá nhân</title>
+</head>
+<body>
+<h3>Bảng tính thuế thu nhập cá nhân</h3>
+<table>
+  <tr>
+    <td>Tổng thu nhập</td>
+    <td><input type="number" id="currency" value="0"></td>
+  </tr>
+  <tr>
+    <td>Người phụ thuộc</td>
+    <td><input type="number" id="person" value="0"></td>
+  </tr>
+  <tr>
+    <td>Thuế TNCN phải nộp</td>
+    <td><input type="text" id="show" disabled></td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: right"><button onclick="currency()">Kiểm tra</button></td>
+  </tr>
+</table>
+<script>
+  function currency() {
+    cn = 11000000;
+    pt = 4400000;
+
+    b1 = 5000000;
+    b2 = 5000000;
+    b3 = 8000000;
+    b4 = 14000000;
+    b5 = 20000000;
+    b6 = 28000000;
+    t1 = 0.05;
+    t2 = 0.1;
+    t3 = 0.15;
+    t4 = 0.20;
+    t5 = 0.25;
+    t6 = 0.30;
+    t7 = 0.35;
+
+    tn = +document.getElementById("currency").value;
+    person = +document.getElementById("person").value;
+
+    nonvat = tn - cn - pt * person;
+    if (nonvat <= b1){
+      fee = nonvat*t1
+    }else if (nonvat <= (b1+b2)){
+      fee = b1*t1 + (nonvat-b1)*t2
+    }else if (nonvat <= (b1+b2+b3)){
+      fee = b1*t1 + b2*t2 + (nonvat-b1-b2)*t3
+    }else if (nonvat <= (b4+b3+b2+b1)){
+      fee = b1*t1 + b2*t2 + b3*t3 + (nonvat-b1-b2-b3)*t4
+    }else if (nonvat <= (b5+b4+b3+b2+b1)){
+      fee = b1*t1 + b2*t2 + b3*t3 + b4*t4 + (nonvat-b1-b2-b3-b4)*t5
+    }else if (nonvat <= (b6+b5+b4+b3+b2+b1)){
+      fee = b1*t1 + b2*t2 + b3*t3 + b4*t4 + b5*t5 + (nonvat-b1-b2-b3-b4-b5)*t6
+    }else{
+      fee = b1*t1 + b2*t2 + b3*t3 + b4*t4 + b5*t5 + b6*t6 + (nonvat-b1-b2-b3-b4-b5-b6)*t7
+    }
+
+    document.getElementById("show").value = fee;
+  }
+
+</script>
+</body>
+</html>
