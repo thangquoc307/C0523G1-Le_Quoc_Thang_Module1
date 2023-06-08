@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra độ dài cạnh tam giác</title>
+</head>
+<body>
+<h4>Hãy nhập 3 cạnh tam giác cần kiểm tra</h4>
+<input type="number" id="a" placeholder="Nhập số đo cạnh 1"> (m)<br>
+<input type="number" id="b" placeholder="Nhập số đo cạnh 2"> (m)<br>
+<input type="number" id="c" placeholder="Nhập số đo cạnh 3"> (m)<br>
+<input type="button" onclick="check()" value="Check">
+<script>
+  function check() {
+    a = +document.getElementById("a").value
+    b = +document.getElementById("b").value
+    c = +document.getElementById("c").value
+  if (a>0&&b>0&&c>0&&a+b>c&&a+c>b&&b+c>a) {
+    alert("Đây là 1 tam giác")
+  }else{
+    alert("Làm gì có cái tam giác như rớ cha")
+  }
+  }
+</script>
+</body>
+</html>
