@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đổi hình</title>
+  <style>
+    img{width: 300px; height: 300px}
+  </style>
+</head>
+<body>
+<button onclick="ìmg1(), check()"><img id="box1"></button>
+<button onclick="ìmg2(), check()"><img id="box2"></button>
+<button onclick="ìmg3(), check()"><img id="box3"></button>
+<button onclick="ìmg4(), check()"><img id="box4"></button>
+<button onclick="ìmg5(), check()"><img id="box5"></button>
+
+
+<script>
+  h1 = "https://media.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/March2023/meme-che-17.jpg";
+  h2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVg96gjpMs1y6KWcsGwAHtYh893CkgrjhKLA&usqp=CAU";
+  h3 = "https://xwatch.vn/upload_images/images/2023/05/22/anh-meme-la-gi.jpg";
+  box1 = document.getElementById("box1").src = h1;
+  box2 = document.getElementById("box2").src = h2;
+  box3 = document.getElementById("box3").src = h3;
+  box4 = document.getElementById("box4").src = h1;
+  box5 = document.getElementById("box5").src = h2;
+  count1 = 0;
+  count2 = 1;
+  count3 = 2;
+  count4 = 0;
+  count5 = 1;
+  lst = [h1,h2,h3];
+
+  function ìmg1(){
+    if (count1 == 2){
+      count1 = -1;
+    }
+    count1 = count1 + 1;
+    box1 = document.getElementById("box1").src = lst[count1];
+  }
+  function ìmg2(){
+    if (count2 == 2){
+      count2 = -1;
+    }
+    count2 = count2 + 1;
+    box2 = document.getElementById("box2").src = lst[count2];
+  }
+  function ìmg3(){
+    if (count3 == 2){
+      count3 = -1;
+    }
+    count3 = count3 + 1;
+    box3 = document.getElementById("box3").src = lst[count3];
+  }
+  function ìmg4(){
+    if (count4 == 2){
+      count4 = -1;
+    }
+    count4 = count4 + 1;
+    box4 = document.getElementById("box4").src = lst[count4];
+  }
+  function ìmg5(){
+    if (count5 == 2){
+      count5 = -1;
+    }
+    count5 = count5 + 1;
+    box5 = document.getElementById("box5").src = lst[count5];
+  }
+  function check(){
+if (count1 == count2 && count2== count3 && count3 == count4 && count4 == count5) {
+  alert("ờ thắng rồi đó :3 game chừng nớ chớ mấy")
+}
+}
+</script>
+</body>
+</html>
