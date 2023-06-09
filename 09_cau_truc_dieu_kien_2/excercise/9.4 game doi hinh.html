@@ -8,11 +8,11 @@
   </style>
 </head>
 <body>
-<button onclick="ìmg1(), check()"><img id="box1"></button>
-<button onclick="ìmg2(), check()"><img id="box2"></button>
-<button onclick="ìmg3(), check()"><img id="box3"></button>
-<button onclick="ìmg4(), check()"><img id="box4"></button>
-<button onclick="ìmg5(), check()"><img id="box5"></button>
+<button onclick="ìmg1()"><img id="box1"></button>
+<button onclick="ìmg2()"><img id="box2"></button>
+<button onclick="ìmg3()"><img id="box3"></button>
+<button onclick="ìmg4()"><img id="box4"></button>
+<button onclick="ìmg5()"><img id="box5"></button>
 
 
 <script>
@@ -37,6 +37,7 @@
     }
     count1 = count1 + 1;
     box1 = document.getElementById("box1").src = lst[count1];
+      check();
   }
   function ìmg2(){
     if (count2 == 2){
@@ -44,6 +45,7 @@
     }
     count2 = count2 + 1;
     box2 = document.getElementById("box2").src = lst[count2];
+      check();
   }
   function ìmg3(){
     if (count3 == 2){
@@ -51,6 +53,7 @@
     }
     count3 = count3 + 1;
     box3 = document.getElementById("box3").src = lst[count3];
+      check();
   }
   function ìmg4(){
     if (count4 == 2){
@@ -58,6 +61,7 @@
     }
     count4 = count4 + 1;
     box4 = document.getElementById("box4").src = lst[count4];
+      check();
   }
   function ìmg5(){
     if (count5 == 2){
@@ -65,6 +69,7 @@
     }
     count5 = count5 + 1;
     box5 = document.getElementById("box5").src = lst[count5];
+      check();
   }
   function check(){
 if (count1 == count2 && count2== count3 && count3 == count4 && count4 == count5) {
