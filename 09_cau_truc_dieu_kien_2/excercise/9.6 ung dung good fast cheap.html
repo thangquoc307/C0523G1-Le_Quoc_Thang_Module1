@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order người yêu</title>
+</head>
+<body>
+<h3>Order người yêu</h3>
+<label><input type="checkbox" name="rich" id="rich" onclick="rich()">Giàu có</label> <br>
+<label><input type="checkbox" name="handsome" id="handsome" onclick="handsome()">Đẹp trai</label> <br>
+<label><input type="checkbox" name="professional" id="professional" onclick="professional()">Giỏi giang</label> <br>
+
+<script>
+    function rich(){
+        r = document.getElementById("rich").checked
+        h = document.getElementById("handsome").checked
+        p = document.getElementById("professional").checked
+        if(r == true && h == true && p == true){
+            document.getElementById("professional").checked = false
+        }
+    }
+    function handsome(){
+        r = document.getElementById("rich").checked
+        h = document.getElementById("handsome").checked
+        p = document.getElementById("professional").checked
+        if(r == true && h == true && p == true){
+            document.getElementById("rich").checked = false
+        }
+    }
+    function professional(){
+        r = document.getElementById("rich").checked
+        h = document.getElementById("handsome").checked
+        p = document.getElementById("professional").checked
+        if(r == true && h == true && p == true){
+            document.getElementById("handsome").checked = false
+        }
+    }
+</script>
+</body>
+</html>
