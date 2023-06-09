@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bang cuu chuong</title>
+  <style>
+    td{border: black solid 1px; width: 150px; height: 30px; text-align: center};
+    table{border-collapse: collapse};
+  </style>
+</head>
+<body>
+<script>
+  let i = 1 ,j = 1, ta = "";
+  while (i < 10){
+    ta = ta + "<tr>";
+    while (j < 10){
+     ta = ta + "<td>" + i + " x " + j + " = " + i*j + "</td>";
+    j++;
+    }
+    ta = ta + "</tr>";
+    j = 1;
+    i++;
+  }
+  document.write("<h2 style='text-align: center'>Bảng cửu chương</h2>" +
+          "<table>" + ta + "</table>");
+</script>
+</body>
+</html>
