@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do you love me</title>
+</head>
+<body>
+<h3>Are you Gay???</h3>
+<button id="yes" onclick="yes()">Yes</button>
+<button id="no" onmouseover="no()" style="position: absolute; left: 70px">No</button>
+<script>
+  function yes(){
+    alert("eo ôi thằng gay này :3" + Math.floor(Math.random()*window.innerWidth))
+  }
+  function no(){
+    document.getElementById("no").style.left = Math.floor(Math.random()*window.innerWidth) + "px";
+    document.getElementById("no").style.top = Math.floor(Math.random()*window.innerHeight) + "px";
+
+  }
+</script>
+</body>
+</html>
