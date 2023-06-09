@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tổng 20 số fibnonacci đầu tiên</title>
+</head>
+<body>
+<script>
+  let i = 0;
+  let j = 1;
+  let n = 20;
+  let a = 1;
+  let sum = 0;
+
+  for (let x = 1; x <= n; x++){
+    sum = sum + a;
+    a = i + j;
+    i = j;
+    j = a;
+  }
+  document.write(sum);
+
+</script>
+</body>
+</html>
