@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In số FizzBuzz</title>
+</head>
+<body>
+<script>
+  let lst = "";
+  for (let i = 1; i <=100; i++){
+    if (i%3 == 0 && i%5 == 0){
+      lst = lst + "FizzBuzz <br>";
+    }else if (i%3 == 0){
+      lst = lst + "Fizz <br>";
+    }else if (i%5 == 0){
+      lst = lst + "Buzz <br>";
+    }else {
+      lst = lst + i + "<br>"
+    }
+  }
+  document.write(lst);
+</script>
+</body>
+</html>
