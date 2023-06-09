@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đoán số</title>
+</head>
+<body>
+<input type="button" onclick="game()" value="Bắt đầu chơi">
+<script>
+function game(){
+  n = +prompt("bạn muốn chơi từ 0 đến bao nhiêu");
+  count = 0;
+  check = false;
+  while (count<3 && !check){
+    ran = Math.round(Math.random()*n);
+    i = +prompt("đoán 1 số đê");
+    check = i == ran;
+    if (check){
+      alert("douma pro thế");
+    }else if (i>ran){
+      alert("máy nó chọn "+ran+" mài chọn cao rồi");
+    }else {
+      alert("máy nó chọn " + ran + " mài chọn thấp rồi");
+    }
+    count++;
+    if (count == 3){
+      alert("hết 3 lượt mợ rồi")
+    }
+}
+}
+</script>
+</body>
+</html>
