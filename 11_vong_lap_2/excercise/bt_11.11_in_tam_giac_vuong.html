@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>in tam giac vuong</title>
+</head>
+<body>
+<script>
+    let n = 5;
+    let i = 1;
+    let triangle1 = "";
+    let triangle2 = "";
+    let triangle3 = "";
+    let triangle4 = "";
+    let j = 1;
+    let z = 1;
+
+    while (i <= n){
+        j = 1;
+        while (j <= i){
+            triangle1 = triangle1 + "*";
+            j++;
+        }
+        i++;
+        triangle1 = triangle1 + "<br>";
+    }
+    i--;
+    while (i >= 1){
+        j = 1;
+        while (j <= i){
+            triangle2 = triangle2 + "*";
+            j++;
+        }
+        i--;
+        triangle2 = triangle2 + "<br>";
+    }
+    while (i < n){
+        j = 1;
+        z = 1;
+        while (j <= i){
+            triangle3 = triangle3 + "<span style='color: white'>*</span>";
+            j++;
+        }
+        while (z <= (n-i)){
+            triangle3 = triangle3 + "*";
+            z++;
+        }
+        i++;
+        triangle3 = triangle3 + "<br>";
+    }
+    i--;
+    while (i >= 0){
+        j = 1;
+        z = 1;
+        while (j <= i){
+            triangle4 = triangle4 + "<span style='color: white'>*</span>";
+            j++;
+        }
+        while (z <= (n-i)){
+            triangle4 = triangle4 + "*";
+            z++;
+        }
+        i--;
+        triangle4 = triangle4 + "<br>";
+    }
+
+    document.write(triangle1 + "<br>" + triangle2 + "<br>" + triangle3 + "<br>" + triangle4);
+</script>
+</body>
+</html>
