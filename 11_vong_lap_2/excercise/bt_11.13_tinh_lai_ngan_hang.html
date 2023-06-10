@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Số tiền vay</td>
+        <td><input type = "number" id="currency"></td>
+    </tr>
+    <tr>
+        <td>Lãi suất hàng tháng %</td>
+        <td><input type = "number" id="i"></td>
+    </tr>
+    <tr>
+        <td>Thời gian vay (tháng)</td>
+        <td><input type = "number" id="due"></td>
+    </tr>
+    <tr>
+        <td>Tiền phải trả</td>
+        <td><input type = "number" id="result" disabled></td>
+    </tr>
+    <tr>
+        <td><button onclick="result()">Result</button></td>
+    </tr>
+</table>
+<script>
+    function result(){
+        let cur = +document.getElementById("currency").value;
+        let i = +document.getElementById("i").value;
+        let due = +document.getElementById("due").value;
+        let res = 0;
+        count = 0;
+
+        while (count < due){
+            cur = cur * (1 + i/100);
+            count++;
+        }
+        document.getElementById("result").value = cur;
+    }
+</script>
+</body>
+</html>
