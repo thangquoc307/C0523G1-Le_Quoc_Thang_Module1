@@ -2,37 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Noi ham</title>
+    <title>replace string</title>
 </head>
 <body>
 <script>
-    function taomang(lst2){
-        let a = Math.round(Math.random()*15);
-        let lst1 = [a];
-        lst2 = [a];
-        let count1 = 0;
-        let count2 = 0;
-        while (count1 < 10){
-            i = Math.round(Math.random()*15);
+function arr(x) {
+    let a = Math.round(Math.random() * 10);
+    let lst1 = [a];
+    let lst2 = [a];
+    let max = -1;
+    let count1 = 0;
+    let count2 = 0;
+    while (count1 < 10) {
+        i = Math.round(Math.random() * 20);
 
-            for (j = 0; j < lst1.length; j++){
-                if (lst1[j] == i){
-                    count2 ++;
-                }
+        for (j = 0; j < lst1.length; j++) {
+            if (lst1[j] == i) {
+                count2++;
             }
-            lst1.push(i);
-            if (count2 == 0){
-                lst2.push(i);
-                count1 ++;
-            }
-            count2 = 0;
         }
+        lst1.push(i);
+        if (count2 == 0) {
+            lst2.push(i);
+            count1++;
+        }
+        count2 = 0;
     }
-
-    a1 = taomang(l1);
-    a2 = taomang(l2);
-    document.write(a1 + " - " + a2);
-
+return lst2;
+}
+    document.write(arr(1) + "<br>" + arr(2))
 </script>
 </body>
 </html>

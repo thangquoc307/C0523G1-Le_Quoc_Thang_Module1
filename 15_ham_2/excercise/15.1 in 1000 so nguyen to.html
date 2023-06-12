@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>in 1000 số nguyên tố</title>
+</head>
+<body>
+<p>Số lượng số nguyên tố cần in</p>
+<input type="number" id="num" placeholder="nhập số lượng số nguyên tố cần in" value="1000">
+<br>
+<button onclick="snt()">In kết quả</button>
+<p id="show"></p>
+<script>
+  function snt(){
+    let num = +document.getElementById("num").value;
+    let lst = "1. 2<br>";
+    let i = 2;
+    let j = 1;
+    let count = 0;
+    let countj = 1;
+
+    while (count < num - 1){
+      while (j < i/2){
+      if (i%j == 0) {
+        countj++;
+        }
+      j++;
+      }
+      if (countj == 2){
+        count++;
+        lst += count + 1 + ". " + i + "<br>";
+      }
+      countj = 1;
+      j = 1;
+
+      i++;
+    }
+    document.getElementById("show").innerHTML = lst;
+  }
+</script>
+</body>
+</html>
