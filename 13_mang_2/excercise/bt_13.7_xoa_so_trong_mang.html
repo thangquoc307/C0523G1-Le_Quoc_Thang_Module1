@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa so trong mang</title>
+</head>
+<body>
+<script>
+  let a = Math.round(Math.random()*15);
+  let lst1 = [a];
+  let lst2 = [a];
+  let count1 = 0;
+  let count2 = 0;
+  while (count1 < 10){
+    i = Math.round(Math.random()*15);
+
+    for (j = 0; j < lst1.length; j++){
+      if (lst1[j] == i){
+        count2 ++;
+      }
+    }
+    lst1.push(i);
+    if (count2 == 0){
+      lst2.push(i);
+      count1 ++;
+    }
+    count2 = 0;
+  }
+  let v = Math.round(Math.random()*15);
+  let result = -1;
+  for (let z = 0; z < lst2.length; z++) {
+    if (lst2[z] == v) {
+      result = z;
+    }
+  }
+  if(result == -1){
+    document.write("List : " + lst2 + "<br>V = " + v + "<br>Result : V không nằm trong List");
+  }else {
+    let popList =[];
+    for (let x = 0; x < result; x++){
+      popList.push(lst2[x]);
+    }
+    for (let y = result + 1; y < lst2.length; y++){
+      popList.push(lst2[y]);
+    }
+    document.write("original List : " + lst2 + "<br>V = " + v + "<br>pop List : " + popList);
+  }
+
+
+</script>
+</body>
+</html>
