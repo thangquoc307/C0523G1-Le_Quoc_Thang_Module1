@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dao nguoc mang</title>
+</head>
+<body>
+<script>
+  let a = Math.round(Math.random()*10);
+  let lst1 = [a];
+  let lst2 = [a];
+  let count1 = 0;
+  let count2 = 0;
+  while (count1 < 10){
+    i = Math.round(Math.random()*20);
+
+    for (j = 0; j < lst1.length; j++){
+      if (lst1[j] == i){
+        count2 ++;
+      }
+    }
+    lst1.push(i);
+    if (count2 == 0){
+      lst2.push(i);
+      count1 ++;
+    }
+    count2 = 0;
+  }
+
+  let reverselst = [];
+  for (let i = 0; i < lst2.length; i++){
+    reverselst.push(lst2[lst2.length - i - 1]);
+  }
+  document.write("origin List : " + lst2 + "<br>reverse List : " + reverselst);
+</script>
+</body>
+</html>
