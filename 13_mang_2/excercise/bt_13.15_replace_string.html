@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>replace string</title>
+</head>
+<body>
+<script>
+  a = prompt("nhập vào chuỗi văn bản có dấu -");
+  b = "";
+  let count = 0;
+  let i;
+
+  for (i = 0; i < a.length; i++){
+    if (a[i] == "-"){
+      b = b + "_";
+    }else {
+      b = b + a[i];
+    }
+  }
+
+  document.write(b);
+</script>
+</body>
+</html>
