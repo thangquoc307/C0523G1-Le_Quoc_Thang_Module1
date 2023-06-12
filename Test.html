@@ -6,10 +6,10 @@
 </head>
 <body>
 <script>
-    function taomang(z){
+    function taomang(lst2){
         let a = Math.round(Math.random()*15);
         let lst1 = [a];
-        let lst2 = [a];
+        lst2 = [a];
         let count1 = 0;
         let count2 = 0;
         while (count1 < 10){
@@ -29,9 +29,9 @@
         }
     }
 
-    let lst1x1 = [taomang(z)];
-    let lst1x2 = [taomang(z)];
-    document.write(lst1x1 + " - " + lst1x2);
+    a1 = taomang(l1);
+    a2 = taomang(l2);
+    document.write(a1 + " - " + a2);
 
 </script>
 </body>

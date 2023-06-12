@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>So sanh chuoi ky tu</title>
+</head>
+<body>
+<script>
+  let a = prompt("nhập chuỗi text a");
+  let b = prompt("nhập chuỗi text b");
+  let count = 0;
+  if (a.length == b.length){
+      for (let i = 0; i < a.length; i++){
+          if (a[i] == b[i]){
+              count++;
+          }
+      }
+      if (count == a.length){
+          document.write("2 chuỗi giống nhau")
+      }else {
+          document.write("2 chuỗi khác nhau");
+      }
+  }else {
+  document.write("2 chuỗi khác nhau");
+  }
+
+</script>
+</body>
+</html>
