@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>n++</title>
+</head>
+<body>
+<input type="number" id="num">
+<button onclick="growup()">Tăng số lên 1 đơn vị</button>
+<script>
+  function growup(){
+    let a = +document.getElementById("num").value;
+    a += 1;
+    document.getElementById("num").value = a;
+  }
+</script>
+</body>
+</html>
