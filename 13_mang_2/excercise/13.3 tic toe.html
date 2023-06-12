@@ -57,9 +57,13 @@
     let y31 = arr[0][2]=="X" && arr[1][2]=="X" && arr[2][2]=="X";
     let c11 = arr[0][0]=="X" && arr[1][1]=="X" && arr[2][2]=="X";
     let c21 = arr[0][2]=="X" && arr[1][1]=="X" && arr[2][0]=="X";
-    if (x11||x21||x31||y11||y21||y31||c11||c21){
-      alert("Ông khí đánh X thắng rồi")
-    }
+
+    setTimeout(function () {
+      if (x11||x21||x31||y11||y21||y31||c11||c21){
+        alert("Ông khí đánh X thắng rồi")
+      }
+    }, 100);
+
     let x12 = arr[0][0]=="O" && arr[0][1]=="O" && arr[0][2]=="O";
     let x22 = arr[1][0]=="O" && arr[1][1]=="O" && arr[1][2]=="O";
     let x32 = arr[2][0]=="O" && arr[2][1]=="O" && arr[2][2]=="O";
@@ -68,9 +72,12 @@
     let y32 = arr[0][2]=="O" && arr[1][2]=="O" && arr[2][2]=="O";
     let c12 = arr[0][0]=="O" && arr[1][1]=="O" && arr[2][2]=="O";
     let c22 = arr[0][2]=="O" && arr[1][1]=="O" && arr[2][0]=="O";
-    if (x12||x22||x32||y12||y22||y32||c12||c22){
-      alert("Ông khí đánh O thắng rồi")
-    }
+
+    setTimeout(function () {
+      if (x12||x22||x32||y12||y22||y32||c12||c22){
+        alert("Ông khí đánh O thắng rồi")
+      }
+    }, 100);
   }
 
 </script>

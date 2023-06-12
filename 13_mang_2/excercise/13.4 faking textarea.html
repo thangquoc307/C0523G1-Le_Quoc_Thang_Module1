@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea</title>
+</head>
+<body>
+<textarea name="text" id="text" cols="30" rows="10" placeholder="Nhập vào đây lời tự thú nào !!!" onkeyup="typingText()"></textarea>
+<script>
+  let typing = "em bị gay đừng đụng đến em";
+  let count = 0;
+  let i = 0;
+  let text = "";
+  function typingText() {
+    if (count < typing.length) {
+      while (i <= count) {
+        text = text + typing[i];
+        i++;
+      }
+      count++;
+      document.getElementById("text").value = text;
+    }else {
+      document.getElementById("text").value = text;
+    }
+  }
+</script>
+</body>
+</html>
