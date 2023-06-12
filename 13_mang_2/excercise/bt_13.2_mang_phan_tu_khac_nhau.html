@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mang_so_nguyen_khac_nhau</title>
+</head>
+<body>
+<script>
+    let a = Math.round(Math.random()*10);
+    let lst1 = [a];
+    let lst2 = [a];
+    let max = -1;
+    let count1 = 0;
+    let count2 = 0;
+    while (count1 < 10){
+        i = Math.round(Math.random()*20);
+
+        for (j = 0; j < lst1.length; j++){
+            if (lst1[j] == i){
+                count2 ++;
+            }
+        }
+        lst1.push(i);
+        if (count2 == 0){
+            lst2.push(i);
+            count1 ++;
+        }
+        count2 = 0;
+    }
+
+    for (let j = 0; j < lst2.length; j++){
+        if (lst2[j] >= max){
+            max = lst2[j];
+        }
+    }
+    document.write("List : " + lst2 + "<br>Max value : " + max);
+</script>
+</body>
+</html>
