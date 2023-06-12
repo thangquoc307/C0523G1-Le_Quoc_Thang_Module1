@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = Math.round(Math.random()*15);
+    let lst1 = [a];
+    let lst2 = [a];
+    let count1 = 0;
+    let count2 = 0;
+    while (count1 < 10){
+        i = Math.round(Math.random()*15);
+
+        for (j = 0; j < lst1.length; j++){
+            if (lst1[j] == i){
+                count2 ++;
+            }
+        }
+        lst1.push(i);
+        if (count2 == 0){
+            lst2.push(i);
+            count1 ++;
+        }
+        count2 = 0;
+    }
+
+    let key;
+    for (let b = 0; b < lst2.length; b++){
+        for (c = b + 1; c < lst2.length; c++){
+            if (lst2[b] > lst2[c]){
+                key = lst2[b];
+                lst2[b] = lst2[c];
+                lst2[c] = key;
+            }
+        }
+    }
+
+
+    document.write("sort List : " + lst2)
+</script>
+</body>
+</html>
