@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dem phan tu</title>
+</head>
+<body>
+<script>
+  let a = [
+    ["a", 2, 1, 24],
+    [8, 11, 9, 4],
+    ["b", "c", 7, 27],
+    [7, 4, "d", 14],
+    ["e", 10, 26, 7]
+  ];
+  let count = 0;
+  for (let i = 0; i < a.length; i++){
+    for (let j = 0; j < a[i].length; j++){
+      if(isNaN(+a[i][j])){
+        count++;
+      }
+    }
+  }
+  document.write("Trong mảng có " + count + " phần tử là số")
+</script>
+</body>
+</html>
