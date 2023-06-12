@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dem so am</title>
+</head>
+<body>
+<script>
+  let a = Math.round(Math.random()*10);
+  let lst1 = [a];
+  let lst2 = [a];
+  let count1 = 0;
+  let count2 = 0;
+  while (count1 < 10){
+    i = Math.round(Math.random()*100) - 50;
+
+    for (j = 0; j < lst1.length; j++){
+      if (lst1[j] == i){
+        count2 ++;
+      }
+    }
+    lst1.push(i);
+    if (count2 == 0){
+      lst2.push(i);
+      count1 ++;
+    }
+    count2 = 0;
+  }
+
+  let negativeList = [];
+  for (let z = 0; z < lst2.length; z++){
+    if (lst2[z] < 0){
+      negativeList.push(lst2[z]);
+    }
+  }
+  document.write("original List : " + lst2 + "<br>negative List : " + negativeList + "<br>Count : " + negativeList.length)
+</script>
+</body>
+</html>
