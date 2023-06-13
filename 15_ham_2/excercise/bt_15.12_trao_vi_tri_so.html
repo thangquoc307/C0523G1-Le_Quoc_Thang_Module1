@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trao vi tri so</title>
+</head>
+<body>
+<script>
+  while (true){
+    let a = prompt("nhập vào giá trị thứ 1");
+    let b = prompt("nhập vào giá trị thứ 2");
+    let arr = reverse(a, b);
+    alert("giá trị sau khi tráo " + arr[1] + arr[0])
+  }
+  function reverse(x, y){
+    return [y, x]
+  }
+</script>
+</body>
+</html>
