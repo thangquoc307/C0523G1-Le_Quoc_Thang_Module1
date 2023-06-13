@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiem tra string</title>
+</head>
+<body>
+<script>
+  while (true){
+    a = +prompt("nhập vào 1 chuỗi");
+    alert(check(a));
+  }
+  function check(a){
+    let result = "Bạn vừa nhập số";
+    if (isNaN(a)){
+      result = "Bạn vừa nhập không phải số"
+    }
+    return result;
+  }
+</script>
+</body>
+</html>
