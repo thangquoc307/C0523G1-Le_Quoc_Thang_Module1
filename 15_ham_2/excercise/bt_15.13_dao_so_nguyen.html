@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dao so nguyen</title>
+</head>
+<body>
+<script>
+  while (true){
+    let num = "" + prompt("Nhập vào dãy số");
+    alert(reverse(num));
+  }
+  function reverse(num){
+    let text = "";
+    let i = 0;
+    while (i < num.length){
+      text += num[num.length - i + 1];
+      i++;
+    }
+    return text;
+  }
+</script>
+</body>
+</html>
