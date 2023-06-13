@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kiem tra doi xung</title>
+</head>
+<body>
+<script>
+  while (true) {
+    let text = prompt("Nhập 1 từ");
+    let count = 0;
+    let i;
+    for (i = 0; i <= text.length / 2; i++) {
+      if (text[i] == text[text.length - i - 1]) {
+        count++;
+      }
+    }
+    if (count == i) {
+      alert(text + " là 1 chuỗi đối xứng");
+    } else {
+      alert(text + " không đối xứng");
+    }
+  }
+</script>
+</body>
+</html>
