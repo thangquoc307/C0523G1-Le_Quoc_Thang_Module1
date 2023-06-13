@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>check gia tri am duong</title>
+</head>
+<body>
+<script>
+  while (true){
+    let a = +prompt("Nhập vào 1 số");
+    alert(check(a));
+  }
+  function check(a){
+    let result = "";
+    if (a >= 0){
+      result = a + " là số dương";
+    }else {
+      result = a + " là số âm";
+    }
+    return result;
+  }
+</script>
+</body>
+</html>
