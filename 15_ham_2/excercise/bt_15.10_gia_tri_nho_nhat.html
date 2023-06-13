@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gia tri nho nhat</title>
+</head>
+<body>
+<script>
+  while (true){
+    let a = +prompt("Nhập vào số thứ 1");
+    let b = +prompt("Nhập vào số thứ 2");
+    let c = +prompt("Nhập vào số thứ 3");
+    alert(check(a, b, c));
+  }
+  function check(x, y, z){
+    let result = "";
+    if (x > y){
+      if(x > z){
+        result = x + " là số lớn nhất";
+      }else {
+        result = z + " là số lớn nhất";
+      }
+    }else {
+      if(y > z){
+        result = y + " là số lớn nhất";
+      }else {
+        result = z + " là số lớn nhất";
+      }
+    }
+    return result;
+  }
+</script>
+</body>
+</html>
