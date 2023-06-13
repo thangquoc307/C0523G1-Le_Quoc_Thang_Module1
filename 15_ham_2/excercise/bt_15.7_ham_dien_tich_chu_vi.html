@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ham dien tich va chu vi</title>
+</head>
+<body>
+<script>
+  while (true){
+  let d = +prompt("Nhập bán kính hình tròn");
+  alert("Hình tròn đường kính " + d + " có chu vi là " + cv(d) + " m");
+  alert("Hình tròn đường kính " + d + " có diện tích là " + dt(d) + " m2");
+  }
+  function cv(d){
+    return result = Math.round((d * Math.PI)*100)/100;
+  }
+  function  dt(d){
+    return result = Math.round(((d**2 * Math.PI)/4)*100)/100;
+  }
+</script>
+</body>
+</html>
