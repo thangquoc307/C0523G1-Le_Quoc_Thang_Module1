@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tra cuu chom sao</title>
+</head>
+<body>
+<input type="text" id="text" placeholder="Mời nhập tên ngôi sao">
+<button onclick="traCuu()">Search</button>
+<br>
+<p id="show"></p>
+<script>
+  function traCuu(){
+    let arr1 = ["polaris", "aldebaran", "deneb", "vega", "altair", "dubhe", "regulus"];
+    let arr2 = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    let starName = document.getElementById("text").value.toLowerCase();
+    let i = 0;
+    let index = -1;
+    let show = "";
+
+    while (i < arr1.length){
+      if (starName == arr1[i]){
+        index = i;
+      }
+      i++;
+    }
+
+    if (index == -1){
+      show = "Không tìm thấy dữ liệu";
+    }else {
+      show = "Sao " + arr1[index] + " thuộc chòm " + arr2[index];
+    }
+
+    document.getElementById("show").innerText = show;
+  }
+</script>
+</body>
+</html>
