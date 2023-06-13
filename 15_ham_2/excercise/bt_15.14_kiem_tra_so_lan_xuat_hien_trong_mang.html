@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>so lan xuat hien trong mang</title>
+</head>
+<body>
+<script>
+  while (true){
+    let arr = [1,2,3,4,5,3,2,4,5,6,7,4,2,4,5,6,7,8];
+    let num = +prompt("nhập 1 số");
+
+    alert(num + " " + check(num, arr) + " " + arr)
+  }
+  function check(num, arr){
+    let count = 0;
+    let lst = "";
+    let show = "";
+    let lst2 = "";
+
+    for (i = 0; i < arr.length; i++){
+      if (num == arr[i]){
+        count++;
+        lst = lst + i + ", ";
+      }
+    }
+
+    if (count == 0){
+      show = "không xuất hiện trong chuỗi số";
+    }else {
+      for (let j = 0; j < lst.length - 2; j++){
+        lst2 = lst2 + lst[j];
+      }
+      show = "có " + count + " lần xuất hiện tại các vị trí " + lst2 + " trong chuỗi số "
+    }
+    return show;
+  }
+</script>
+
+</body>
+</html>
