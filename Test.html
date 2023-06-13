@@ -5,32 +5,12 @@
     <title>replace string</title>
 </head>
 <body>
-<script>
-function arr(x) {
-    let a = Math.round(Math.random() * 10);
-    let lst1 = [a];
-    let lst2 = [a];
-    let max = -1;
-    let count1 = 0;
-    let count2 = 0;
-    while (count1 < 10) {
-        i = Math.round(Math.random() * 20);
 
-        for (j = 0; j < lst1.length; j++) {
-            if (lst1[j] == i) {
-                count2++;
-            }
-        }
-        lst1.push(i);
-        if (count2 == 0) {
-            lst2.push(i);
-            count1++;
-        }
-        count2 = 0;
-    }
-return lst2;
-}
-    document.write(arr(1) + "<br>" + arr(2))
+
+<script>
+a = [1,2,3,4,5,5,5]
+a.splice(2,3);
+alert(a)
 </script>
 </body>
 </html>

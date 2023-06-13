@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trang quan ly san pham</title>
+  <style>
+    button{width: 100px}
+    tr:nth-child(odd){background-color: azure}
+    tr:nth-child(even){background-color: white}
+    table{border-collapse: collapse}
+    td{border: 1px black solid}
+    td:first-child{width: 300px}
+  </style>
+</head>
+<body>
+<h3>Quản lý sản phẩm</h3>
+<input style="width: 200px" type="text" id="add" placeholder="Nhập tên sản phẩm mới">
+<button onclick="add()">Insert</button>
+<br>
+<br>
+<table id="table">
+</table>
+
+<script>
+  let count = 0;
+  let data = []
+  let dataCount = [];
+
+    function convertarr(arr){
+        let result = [];
+        for (let i = 0; i < arr.length; i++){
+            for (let j = 0; j < arr[i].length; j++){
+                result.push(arr[i][j]);
+            }
+        }
+        return result;
+    }
+    function add() {
+        let name = document.getElementById("add").value;
+        let table = document.getElementById("table");
+
+      c1 = "<tr><td><span id='name" + count + "'>" + name + "</span></td>";
+      c2 = "<td><button onclick='edit(this.id)' id='edit" + count + "'>Edit</button></td>"
+      c3 = "<td><button onclick='remove(this.id)' id='remove" + count + "'>Remove</button></td></tr>"
+        data.push([c1, c2, c3]);
+        document.getElementById("table").innerHTML = convertarr(data).join("");
+        document.getElementById("add").value = "";
+
+        dataCount.push(count);
+    count++;
+
+  }
+  function edit(id){
+      let idName = "";
+      for (let i = 4; i < id.length; i++){
+        idName += id[i];
+      };
+      idNameN = "name" + idName;
+      let name = prompt("Nhập lại tên sản phẩm", document.getElementById(idNameN).innerText);
+      data[+idName][0] = "<tr><td><span id='name" + count + "'>" + name + "</span></td>";
+      document.getElementById("table").innerHTML = convertarr(data).join("");
+  }
+  function remove(id){
+    let idName = "";
+    let z = -1;
+    for (let i = 6; i < id.length; i++){
+      idName += id[i];
+    };
+
+    for(i = 0; i < dataCount.length; i++){
+        if (dataCount[i] == idName){
+            z = i;
+        }
+    }
+    dataCount.splice(z, 1);
+    data.splice(z, 1);
+
+    document.getElementById("table").innerHTML = convertarr(data).join("");
+  }
+
+
+
+</script>
+</body>
+</html>
