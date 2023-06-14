@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rectangle class</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+  class rectangle {
+    getWidth(){
+      return this.width;
+    }
+    getHeight(){
+      return this.height;
+    }
+    setWidth(width){
+      this.width = width;
+    }
+    setHeight(height){
+      this.height = height;
+    }
+    getArea(){
+      return this.width * this.height;
+    }
+    getPerimeter(){
+      return (this.width + this.height) * 2;
+    }
+  }
+
+  let myRectangle = new rectangle();
+  myRectangle.setWidth(+prompt("nhập chiều dài hình chữ nhật"));
+  myRectangle.setHeight(+prompt("nhập chiều rộng hình chữ nhật"));
+
+  let width = myRectangle.getWidth();
+  let height = myRectangle.getHeight();
+
+
+  let canvas = document.getElementById("myCanvas").getContext("2d");
+  canvas.fillStyle = "green";
+  canvas.fillRect((500 - width)/2, (500 - height)/2, width, height);
+</script>
+</body>
+</html>
