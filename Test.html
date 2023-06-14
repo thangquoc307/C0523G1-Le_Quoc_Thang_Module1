@@ -5,12 +5,13 @@
     <title>replace string</title>
 </head>
 <body>
-
-
+<textarea id="show" cols="30" rows="10">ádvadv</textarea>
+<button onclick="a()"></button>
 <script>
-a = [1,2,3,4,5,5,5]
-a.splice(2,3);
-alert(a)
+    function a() {
+        a = document.getElementById("show").value;
+        alert(a);
+    }
 </script>
 </body>
 </html>

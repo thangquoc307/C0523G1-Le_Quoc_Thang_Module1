@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2 mobile</title>
+  <style>
+    td{
+      border: black solid 1px;
+    }
+    table{border-collapse: collapse}
+  </style>
+</head>
+<body>
+<table>
+  <tr>
+    <td style="width: 30px; text-align: center"></td>
+    <td style="width: 50px; text-align: center">Status</td>
+    <td style="width: 150px">Mobile Name</td>
+    <td style="width: 75px; background-color: green; color: white">Battery</td>
+    <td style="width: 100px; text-align: center">Send Message</td>
+    <td style="width: 100px; text-align: center">Show Inbox</td>
+    <td style="width: 100px; text-align: center; background-color: orange">Charge</td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><input value="Nokia" onchange="turn(this)" checked type="checkbox"></td>
+    <td id="turn1"></td>
+    <td id="name1"></td>
+    <td id="battery1"></td>
+    <td style="text-align: center"><button value="Iphone/Nokia" onclick="send(this.value)">Send</button></td>
+    <td style="text-align: center"><button value="Nokia" onclick="show(this.value)">Inbox</button></td>
+    <td style="text-align: center"><button value="Nokia" onclick="charge(this.value)">Charge</button></td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><input value="Iphone" onchange="turn(this)" checked type="checkbox"></td>
+    <td id="turn2"></td>
+    <td id="name2"></td>
+    <td id="battery2"></td>
+    <td style="text-align: center"><button value="Nokia/Iphone" onclick="send(this.value)">Send</button></td>
+    <td style="text-align: center"><button value="Iphone" onclick="show(this.value)">Inbox</button></td>
+    <td style="text-align: center"><button value="Iphone" onclick="charge(this.value)">Charge</button></td>
+  </tr>
+</table>
+<br>
+<br>
+<textarea id="show" cols="70" rows="40" disabled></textarea>
+<script>
+  function charge(id){
+    let ob = checkItem(id);
+    if (ob.power == 100){
+      alert("Đầy rồi sạc chi nữa cha")
+    }else {
+      ob.power += 10;
+    }
+    reloadBattery();
+  }
+  function turn(id){
+    let ob = checkItem(id.value);
+    if (id.checked){
+      ob.on = true;
+    }else {
+      ob.on = false;
+    }
+    reloadBattery();
+  }
+  function show(id){
+    let ob = checkItem(id);
+    if (ob.on) {
+      document.getElementById("show").innerHTML = "From: Inbox of " + id + "\n \nReceive: \n \n" + ob.getReceive() + "\n \nSent: \n \n" + ob.getSend();
+    }else {
+      alert("Điện thoại hết mợ pin rồi, sạc giùm cái đê")
+    }
+  }
+  function send(id){
+    pSen = "";
+    pRev = "";
+    let i = 0;
+    for (; i < id.length; i++){
+      if (id[i] == "/"){
+        break;
+      }
+      pRev += id[i];
+    }
+    for (i++ ;i < id.length; i++){
+      pSen += id[i];
+    }
+    let obSen = checkItem(pSen);
+    let obRev = checkItem(pRev);
+    if (obSen.on) {
+      let text = prompt("Message");
+      obSen.actionSend(text);
+      obRev.actionReceive(text);
+      reloadBattery()
+    }else {
+      alert("Điện thoại hết mợ pin rồi, sạc giùm cái đê");
+    }
+  }
+  class mobile{
+    constructor(name) {
+      this.on = true;
+      this.name = name;
+      this.send = "";
+      this.receive = "";
+      this.power = 100;
+    }
+    getBattery(){
+      return this.power;
+    }
+    actionReceive(text){
+      this.receive += ("- " + text + "\n");
+    }
+    getReceive(){
+      return this.receive;
+    }
+    actionSend(text){
+      this.send += ("- " + text + "\n");
+      this.power -= 20;
+      if (this.power == 0){
+        this.on = false;
+      }
+    }
+    getSend(){
+      return this.send;
+    }
+    actionTurn(status){
+      this.on = status;
+    }
+    getStatus(){
+      return this.on;
+    }
+    charge(){
+      this.power++;
+    }
+  }
+  //
+  let nokia = new mobile("Nokia");
+  let iphone = new mobile("Iphone");
+  let object = [nokia, iphone];
+  let index = ["Nokia", "Iphone"];
+
+  function checkStatus1(status){
+    let on = "";
+    if(status){
+      on = "on";
+    }else {
+      on = "off";
+    }
+    return on;
+  }
+  function checkStatus2(status){
+    let on = "";
+    if(status){
+      on = "text-align: center; color: white; background-color: green";
+    }else {
+      on = "text-align: center; color: white; background-color: red";
+    }
+    return on;
+  }
+  function checkItem(text){
+    let j = -1;
+    for (i = 0; i < index.length; i++){
+      if (text == index[i]){
+        j = i;
+      }
+    }
+    return object[j];
+  }
+
+  document.getElementById("name1").innerHTML = nokia.name;
+  document.getElementById("name2").innerHTML = iphone.name;
+  reloadBattery();
+
+  function reloadBattery() {
+    document.getElementById("battery1").innerHTML = nokia.getBattery() + " %";
+    document.getElementById("battery2").innerHTML = iphone.getBattery() + " %";
+    document.getElementById("turn1").innerHTML = checkStatus1(nokia.on);
+    document.getElementById("turn2").innerHTML = checkStatus1(iphone.on);
+    document.getElementById("turn1").style = checkStatus2(nokia.on);
+    document.getElementById("turn2").style = checkStatus2(iphone.on);
+  }
+</script>
+</body>
+</html>
