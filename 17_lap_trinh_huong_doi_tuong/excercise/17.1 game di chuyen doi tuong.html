@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Di chuyen doi tuong</title>
+</head>
+<body onkeydown="move(event)">
+  <div id="game"></div>
+  <script>
+    function Hero(top, left, size, speed){
+      this.top = top;
+      this.left = left;
+      this.size = size;
+      this.speed = speed;
+
+      this.getHeroElement = function(){
+        return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="https://aztruyen.com/cover/tong-hop-cac-hinh-anh-xam-xi-156837845.jpg"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+      }
+
+      this.moveRight = function(){
+        this.left += this.speed;
+      }
+      this.moveLeft = function(){
+        this.left -= this.speed;
+      }
+      this.moveUp = function(){
+        this.top -= this.speed;
+      }
+      this.moveDown = function(){
+        this.top += this.speed;
+      }
+
+    }
+
+    let hero = new Hero(0, 0, 200, 50);
+
+    function start(){
+      document.getElementById('game').innerHTML = hero.getHeroElement();
+      setTimeout(start, 1);
+    }
+    function move(event){
+      switch (event.which) {
+        case 37:{
+          hero.moveLeft();
+          break;
+        }
+        case 38:{
+          hero.moveUp();
+          break;
+        }
+        case 39:{
+          hero.moveRight();
+          break;
+        }
+        case 40:{
+          hero.moveDown();
+          break;
+        }
+      }
+    }
+    start();
+  </script>
+</body>
+</html>
+
+
