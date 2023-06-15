@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cong tac va bong den</title>
+</head>
+<body>
+<canvas id="canvas" width="300" height="300"></canvas>
+<button id="switch" onclick="change(this)">OFF</button>
+
+<script>
+    actionLamp();
+    class switchButton{
+        constructor(on){
+            this.status = on;
+        }
+        setStatus(boo){
+            this.status = boo;
+        }
+    }
+
+    class lamp{
+        constructor(on, co) {
+            this.status = on;
+            this.color = co;
+        }
+        setStatus(boo){
+            this.status = boo;
+        }
+        getStatus(){
+            return this.color;
+        }
+    }
+
+    let mySwitch = new switchButton(false);
+    let myLamp = new lamp(false, "grey");
+
+    function change(obj){
+        let status = obj.innerText;
+        if (status == "OFF"){
+            document.getElementById(obj.id).innerText = "ON";
+            mySwitch.setStatus(true);
+            myLamp.setStatus(true);
+        }else {
+            document.getElementById(obj.id).innerText = "OFF";
+            mySwitch.setStatus(false);
+            myLamp.setStatus(false);
+        }
+        actionLamp();
+    }
+
+    function actionLamp(){
+        let canvas = document.getElementById("canvas").getContext("2d");
+        canvas.arc(150, 150, 100, 0, 2 * Math.PI);
+        canvas.fillStyle = "red";
+        canvas.fill();
+        alert(myLamp.getStatus())
+    }
+
+</script>
+</body>
+</html>
