@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Co caro</title>
+    <style>
+        td{
+            width: 30px;
+            height: 30px;
+            border: black 1px solid;
+            text-align: center;
+        }
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<span id="table"></span>
+<br>
+<button onclick="start()">Reset</button>
+<script>
+    let table = "";
+    let count = 0;
+    start();
+    function start() {
+        table = "<table>";
+        for (let i = 0; i < 20; i++) {
+            table += "<tr>"
+            for (let j = 0; j < 20; j++) {
+                table += "<td id = '" + i + "/" + j + "' onclick = 'tick(this)'></td>";
+            }
+            table += "</tr>"
+        }
+        document.getElementById("table").innerHTML = "<table>" + table + "</table>";
+    }
+    function tick(ele){
+        let sym = "";
+        if (ele.innerText == "") {
+            if (count % 2 == 0) {
+                sym = "X";
+            } else {
+                sym = "O";
+            }
+            count++;
+            document.getElementById(ele.id).innerHTML = sym;
+            setTimeout(() => {
+                check(sym);
+            }, 1);
+        }else {
+            alert("Ô này đánh rồi mà cha");
+        }
+    }
+    function getInner(i, j){
+        return document.getElementById(i + "/" + j).innerText;
+    }
+    function check(sym) {
+        for (let i = 0; i < 16; i++) {
+            for (let j = 0; j < 16; j++) {
+                if (getInner(i, j) == sym && getInner(i + 1, j + 1) == sym && getInner(i + 2, j + 2) == sym && getInner(i + 3, j + 3) == sym && getInner(i + 4, j + 4) == sym) {
+                    alert("Ông đánh " + sym + " thắng rồi, chơi bời gì nữa");
+                    start();
+                }
+            }
+        }
+        for (let i = 0; i < 16; i++) {
+            for (let j = 0; j < 16; j++) {
+                if (getInner(i, j) == sym && getInner(i + 1, j) == sym && getInner(i + 2, j) == sym && getInner(i + 3, j) == sym && getInner(i + 4, j) == sym) {
+                    alert("Ông đánh " + sym + " thắng rồi, chơi bời gì nữa");
+                    start();
+                }
+            }
+        }
+        for (let i = 0; i < 16; i++) {
+            for (let j = 0; j < 16; j++) {
+                if (getInner(i, j) == sym && getInner(i, j + 1) == sym && getInner(i, j + 2) == sym && getInner(i, j + 3) == sym && getInner(i, j + 4) == sym) {
+                    alert("Ông đánh " + sym + " thắng rồi, chơi bời gì nữa");
+                    start();
+                }
+            }
+        }
+        for (let i = 0; i < 16; i++) {
+            for (let j = 4; j < 20; j++) {
+                if (getInner(i, j) == sym && getInner(i + 1, j - 1) == sym && getInner(i + 2, j - 2) == sym && getInner(i + 3, j - 3) == sym && getInner(i + 4, j - 4) == sym) {
+                    alert("Ông đánh " + sym + " thắng rồi, chơi bời gì nữa");
+                    start();
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
