@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>remote TV</title>
+  <style>
+    button{
+      width: 30px;
+      height: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<table style="border: black solid 2px"
+  <tr>
+    <td style="height: 50px; width: 800px; font-style: inherit; text-align: left" id="showChannel"></td>
+  </tr>
+  <tr>
+    <td style="height: 350px"></td>
+  </tr>
+  <tr>
+    <td id="showVolume" style="text-align: center; height: 50px"></td>
+  </tr>
+  <tr>
+    <td style="border-top: black 1px solid"><button id="showStatus" onclick="onOffAction()"></td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
+<table style="border: grey 15px solid; padding: 10px">
+  <tr>
+    <td><button onclick="onOffAction()">P</button></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>channel</td>
+    <td><button onclick="channelAction(1)">+</button></td>
+    <td><button onclick="channelAction(-1)">-</button></td>
+  </tr>
+  <tr>
+    <td>volume</td>
+    <td><button onclick="volumeAction(5)">+</button></td>
+    <td><button onclick="volumeAction(-5)">-</button></td>
+  </tr>
+</table>
+<script>
+
+  class tv{
+    constructor() {
+      this.power = true;
+      this.channel = ["VTV1", "VTV2", "VTV3"];
+      this.count = 0;
+      this.onOff = 0;
+      this.volume = 50;
+    }
+    getPower(){
+      return this.power;
+    }
+    setPower(onOffValue){
+      this.onOff += onOffValue;
+      this.power = (this.onOff%2 == 0);
+    }
+    getVolume(){
+      return this.volume;
+    }
+    setVolume(value){
+     this.volume += value;
+    }
+    setChannel(num){
+      this.count += num;
+    }
+    getChannel(){
+      return this.channel[Math.abs(this.count)%3];
+    }
+  }
+  let myTv = new tv();
+  function showOnOff(){
+    if (myTv.getPower()){
+      document.getElementById("showStatus").innerText = "ON";
+      document.getElementById("showStatus").style = "height: 50px; text-align: center; width: 50px; height: 50px; color: white; background-color: green"
+    }else {
+      document.getElementById("showStatus").innerText = "OFF";
+      document.getElementById("showStatus").style = "height: 50px; text-align: center; width: 50px; height: 50px; color: white; background-color: red"
+    }
+  }
+  function showChannel(){
+    if (myTv.getPower()){
+      document.getElementById("showChannel").innerHTML = " --" + myTv.getChannel();
+    }else {
+      document.getElementById("showChannel").innerHTML = "";
+    }
+  }
+  function showVolume(){
+    if (myTv.getPower()){
+      document.getElementById("showVolume").innerHTML = "Volume : " + myTv.getVolume() + "%";
+    }else {
+      document.getElementById("showVolume").innerHTML = "";
+    }
+  }
+  function onOffAction(){
+    myTv.setPower(1);
+    refresh();
+  }
+  function channelAction(num){
+    myTv.setChannel(num);
+    refresh();
+  }
+  function volumeAction(num){
+    if (myTv.getVolume()+num <= 100 && myTv.getVolume()+num >= 0){
+      myTv.setVolume(num);
+      refresh();
+    }
+
+  }
+  function refresh() {
+    showOnOff();
+    showVolume();
+    showChannel();
+  }
+  refresh();
+</script>
+</body>
+</html>
