@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game pacman</title>
+</head>
+<body onkeydown="move(event)">
+<button onclick="changeSpeed()"><span id="discipline">Hack Speed</span></button>
+<div id="pacman"></div>
+<div id="heart1"></div>
+<div id="heart2"></div>
+<div id="heart3"></div>
+<div id="trap1"></div>
+<div id="trap2"></div>
+<div id="trap3"></div>
+<script>
+
+  class pacman{
+      constructor() {
+          this.linkImg = "thuan.png";
+          this.width = 120;
+          this.height = 200;
+          this.top = window.innerHeight/2 - this.height/2;
+          this.left = window.innerWidth/2 - this.width/2;
+          this.speed = 10;
+          this.rotate = 0;
+      }
+      builtImg(){
+          return `<img src="${this.linkImg}" width="${this.width}px" height="${this.height}px" style="left: ${this.left}px; top: ${this.top}px; position:absolute; rotate: ${this.rotate}deg">`
+      }
+      setSpeed(x){
+          if (x%2 == 0){
+              this.speed = 50;
+          }else {
+              this.speed = 10;
+          }
+      }
+      moveUp(){
+          this.top -= this.speed;
+          this.rotate = 90;
+          this.linkImg = "nghich.png";
+      }
+      moveDown(){
+          this.top += this.speed;
+          this.rotate = 90;
+          this.linkImg = "thuan.png";
+      }
+      moveLeft(){
+          this.left -= this.speed;
+          this.rotate = 0;
+          this.linkImg = "nghich.png";
+      }
+      moveRight(){
+          this.left += this.speed;
+          this.rotate = 0;
+          this.linkImg = "thuan.png";
+      }
+  }
+  class trap{
+      constructor(xPosition, yPosition, id, type) {
+          this.xPosition = xPosition;
+          this.yPosition = yPosition;
+          this.width = 50;
+          this.height = 50;
+          this.link = ["5oqzqc.jpg", "non.jpg"];
+          this.url = this.link[type];
+          this.id = id;
+          this.available = true;
+      }
+      builtImg(){
+          return `<img src="${this.url}" width="${this.width}px" height="${this.height}px" style="left: ${this.xPosition}px; top: ${this.yPosition}px; position:absolute">`
+      }
+  }
+
+  let count = 1;
+  function changeSpeed(){
+      count++;
+      hero.setSpeed(count);
+      if (count%2 == 0){
+          document.getElementById("discipline").innerText = "Rap chậm thôiiii";
+      }else {
+          document.getElementById("discipline").innerText = "Hack Speed";
+      }
+
+  }
+  function built(){
+      document.getElementById("pacman").innerHTML = hero.builtImg();
+      document.getElementById(trap1.id).innerHTML = trap1.builtImg();
+      document.getElementById(trap2.id).innerHTML = trap2.builtImg();
+      document.getElementById(trap3.id).innerHTML = trap3.builtImg();
+      document.getElementById(heart1.id).innerHTML = heart1.builtImg();
+      document.getElementById(heart2.id).innerHTML = heart2.builtImg();
+      document.getElementById(heart3.id).innerHTML = heart3.builtImg();
+  }
+  function move(event){
+          switch (event.which) {
+              case 37: {
+                  hero.moveLeft();
+                  break;
+              }
+              case 38: {
+                  hero.moveUp();
+                  break;
+              }
+              case 39: {
+                  hero.moveRight();
+                  break;
+              }
+              case 40: {
+                  hero.moveDown();
+                  break;
+              }
+          }
+      if (hero.top <= 0){
+          hero.moveDown();
+      }
+      if (hero.top >= (window.innerHeight - hero.height)){
+          hero.moveUp()
+      };
+      if (hero.left <= 0){
+          hero.moveRight();
+      }
+      if (hero.left >= (window.innerWidth - hero.width)){
+          hero.moveLeft();
+      }
+          built()
+  }
+
+  let hero = new pacman();
+  let trap1 = new trap(200, 200, "trap1", 0);
+  let trap2 = new trap(400, 500, "trap2", 0);
+  let trap3 = new trap(1200, 300, "trap3", 0);
+  let heart1 = new trap(200, 700, "heart1", 1);
+  let heart2 = new trap(1500, 700, "heart2", 1);
+  let heart3 = new trap(1300, 100, "heart3", 1);
+  built();
+
+  // Bước 8: Nếu xe đâm phải chướng ngại vật thì game sẽ kết thúc
+  // Bước 11: Nếu xe đi qua 1 phần thưởng thì cộng điểm
+
+
+
+</script>
+</body>
+</html>
