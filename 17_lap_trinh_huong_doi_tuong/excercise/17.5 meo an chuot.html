@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>meo an chuot</title>
+</head>
+<body>
+<script>
+  class mouse{
+    constructor(name, position) {
+      this.name = name;
+      this.weight = 1;
+      this.speed = 10;
+      this.life = true;
+      this.sound = "chít chít";
+      this.position = position;
+    }
+    getPosition(){
+      return this.position;
+    }
+    setPosition(speed){
+      if (this.life) {
+        this.position += speed;
+      }
+    }
+    getSpeed(){
+      return this.speed;
+    }
+    getLife(){
+      if (this.life) {
+        return "Life";
+      }else {
+        return "Die";
+      }
+    }
+    getSound(){
+      if (!this.life){
+        return "----";
+      }else {
+        return this.sound;
+      }
+    }
+    setLife(){
+      this.life = false;
+    }
+    getWeight(){
+      if (!this.life){
+        this.weight = 0;
+      }
+      return this.weight;
+    }
+    getStatus(){
+      document.write(this.name + "<br>");
+      document.write("- Tình trạng sống chết : " + this.getLife() + "<br>");
+      document.write("- Trọng lượng : " + this.getWeight() + "kg<br>");
+      document.write("- Vị trí : " + this.getPosition() + "<br>");
+      document.write("- Kêu : " + this.getSound() + "<br>");
+      document.write("<br>");
+
+    }
+  }
+  class cat{
+    constructor(name) {
+      this.name = name;
+      this.weight = 5;
+      this.speed = 15;
+      this.sound = "mèo méo meo mèo meo";
+      this.position = 0;
+    }
+    setPosition(speed){
+      this.position += speed;
+    }
+    setWeight(weight){
+      this.weight += weight;
+    }
+    getPosition(){
+      return this.position;
+    }
+    getSound(){
+        return this.sound;
+    }
+    getStatus() {
+      document.write(this.name + "<br>");
+      document.write("- Trọng lượng : " + this.weight + "kg<br>");
+      document.write("- Vị trí : " + this.getPosition() + "<br>");
+      document.write("- Kêu : " + this.getSound() + "<br>");
+      document.write("<br>");
+    }
+  }
+  let mouse1 = new mouse("Mouse1", 20);
+  let mouse2 = new mouse("Mouse2", 50);
+  let mouse3 = new mouse("Mouse3", 100);
+  let cat1 = new cat("Cat");
+
+  function status() {
+    cat1.getStatus();
+    mouse1.getStatus();
+    mouse2.getStatus();
+    mouse3.getStatus();
+    document.write("-----------------------------------------------------------");
+    document.write("<br>");
+    document.write("<br>");
+  }
+
+  function checkAllDie(){
+    let life = 0;
+    let lst = [mouse1.life, mouse2.life, mouse3.life];
+    for (let j = 0; j < lst.length; j++){
+      if (lst[j]){
+        life++;
+      }
+    }
+    return life;
+  }
+  function move(){
+    mouse1.setPosition(mouse1.speed);
+    mouse2.setPosition(mouse2.speed);
+    mouse3.setPosition(mouse3.speed);
+    cat1.setPosition(cat1.speed);
+  }
+
+  let chappter = 0;
+  let lst = [mouse1, mouse2, mouse3];
+  document.write("Lượt chạy thứ : " + chappter + "<br><br><br>");
+  status();
+
+  while (checkAllDie() > 0){
+    move();
+    for (let i = 0; i < lst.length; i++){
+      if ((lst[i].getPosition() <= cat1.getPosition()) && lst[i].life){
+        cat1.position = lst[i].getPosition();
+        lst[i].life = false;
+        cat1.setWeight(lst[i].weight);
+        document.write("Lượt chạy thứ : " + chappter + "<br><br><br>")
+        status();
+        break;
+      }
+    }
+    chappter++;
+  }
+
+
+</script>
+</body>
+</html>
