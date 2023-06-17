@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bouncing ball game</title>
+</head>
+<body onkeydown="move(event)">
+<input id="show" style="width: 50px; height: 50px; font-size: 30px; text-align: center">
+<button onclick="start()" style="width: 50px; height: 25px; text-align: center">Start</button>
+<br>
+<canvas id="canvas" width="1000px" height="700px" style="border: black 1px solid"></canvas>
+<script>
+  class ball{
+    constructor(x, y, r) {
+      this.x = x;
+      this.y = y;
+      this.r = r;
+      this.speed = 2.5;
+      this.vector = [(Math.random() - 0.5) * 2 * this.speed, -Math.random() * this.speed];
+      this.score = 0;
+    }
+    move(){
+      this.x += this.vector[0];
+      this.y += this.vector[1];
+    }
+    rowHit(){
+      this.vector[1] = Math.abs(this.vector[1]);
+    }
+    colHit(){
+      this.vector[0] = -this.vector[0];
+    }
+    padHit(){
+      this.vector[1] = -Math.abs(this.vector[1]);
+      this.score++;
+    }
+  }
+  class pad{
+    constructor(x, y, width, height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.speed = 30;
+    }
+    moveLeft(){
+      this.x -= this.speed;
+    }
+    moveRight(){
+      this.x += this.speed;
+    }
+
+
+  }
+  function refress(){
+    let canvas = ctx.getContext("2d");
+    canvas.reset();
+    canvas.fillStyle = "grey";
+    canvas.fillRect(myPad.x, myPad.y, myPad.width, myPad.height);
+
+    canvas.beginPath();
+    canvas.arc(myBall.x, myBall.y, myBall.r, 0, 2 * Math.PI,);
+    canvas.fillStyle = "red";
+    canvas.fill();
+
+    document.getElementById("show").value = myBall.score;
+
+  }
+  function move(event){
+    let eventKey = event.which;
+    if (eventKey == 39){
+      myPad.moveRight();
+    }
+    if (eventKey == 37){
+      myPad.moveLeft();
+    }
+    if (myPad.x <= 0){
+      myPad.x = 0;
+    }
+    if (myPad.x + myPad.width >= canvas.width){
+      myPad.x = canvas.width - myPad.width;
+    }
+    refress();
+  }
+  function ballMove(){
+    if (startGame) {
+      myBall.move();
+      if (myBall.y - myBall.r <= myBall.speed) {
+        myBall.rowHit();
+      }
+      if (myBall.x - myBall.r <= myBall.speed || myBall.x + myBall.r >= ctx.width - myBall.speed) {
+        myBall.colHit();
+      }
+      if (myBall.x >= myPad.x && myBall.x <= myPad.x + myPad.width && Math.abs(myPad.y - myBall.y) < myBall.r) {
+        myBall.padHit();
+      }
+      if (myBall.y > ctx.height) {
+        startGame = false;
+        alert("thua mợ rồi !!!");
+      }
+      refress();
+    }
+  }
+  function start(){
+    setInterval(ballMove, 0.1);
+  }
+  let startGame = true;
+  let ctx = document.getElementById("canvas");
+  let myPad = new pad((ctx.width - 100) / 2, ctx.height - 100, 100, 10);
+  let myBall = new ball(myPad.x + myPad.width / 2, myPad.y - 10, 10);
+  refress();
+
+
+</script>
+</body>
+</html>
