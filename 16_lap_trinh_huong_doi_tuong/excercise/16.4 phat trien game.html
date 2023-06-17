@@ -5,7 +5,9 @@
     <title>game pacman</title>
 </head>
 <body onkeydown="move(event)">
+<input type="text" disabled style="width: 50px; height: 50px; text-align: center; font-size: 40px" id="score">
 <button onclick="changeSpeed()"><span id="discipline">Hack Speed</span></button>
+
 <div id="pacman"></div>
 <div id="heart1"></div>
 <div id="heart2"></div>
@@ -18,15 +20,15 @@
   class pacman{
       constructor() {
           this.linkImg = "thuan.png";
-          this.width = 120;
+          this.width = 150;
           this.height = 200;
           this.top = window.innerHeight/2 - this.height/2;
           this.left = window.innerWidth/2 - this.width/2;
           this.speed = 10;
-          this.rotate = 0;
+          this.score = 0;
       }
       builtImg(){
-          return `<img src="${this.linkImg}" width="${this.width}px" height="${this.height}px" style="left: ${this.left}px; top: ${this.top}px; position:absolute; rotate: ${this.rotate}deg">`
+          return `<img src="${this.linkImg}" width="${this.width}px" height="${this.height}px" style="left: ${this.left}px; top: ${this.top}px; position:absolute">`
       }
       setSpeed(x){
           if (x%2 == 0){
@@ -35,29 +37,29 @@
               this.speed = 10;
           }
       }
+      setScore(x){
+          this.score += x;
+      }
+      getScore(){
+          return this.score;
+      }
       moveUp(){
           this.top -= this.speed;
-          this.rotate = 90;
-          this.linkImg = "nghich.png";
       }
       moveDown(){
           this.top += this.speed;
-          this.rotate = 90;
-          this.linkImg = "thuan.png";
       }
       moveLeft(){
           this.left -= this.speed;
-          this.rotate = 0;
           this.linkImg = "nghich.png";
       }
       moveRight(){
           this.left += this.speed;
-          this.rotate = 0;
           this.linkImg = "thuan.png";
       }
   }
   class trap{
-      constructor(xPosition, yPosition, id, type) {
+      constructor(xPosition, yPosition, id, type, score) {
           this.xPosition = xPosition;
           this.yPosition = yPosition;
           this.width = 50;
@@ -66,13 +68,16 @@
           this.url = this.link[type];
           this.id = id;
           this.available = true;
+          this.score = score;
       }
       builtImg(){
-          return `<img src="${this.url}" width="${this.width}px" height="${this.height}px" style="left: ${this.xPosition}px; top: ${this.yPosition}px; position:absolute">`
+          if (this.available) {
+              return `<img src="${this.url}" width="${this.width}px" height="${this.height}px" style="left: ${this.xPosition}px; top: ${this.yPosition}px; position:absolute">`
+          }else {
+              return "";
+          }
       }
   }
-
-  let count = 1;
   function changeSpeed(){
       count++;
       hero.setSpeed(count);
@@ -85,6 +90,7 @@
   }
   function built(){
       document.getElementById("pacman").innerHTML = hero.builtImg();
+      document.getElementById("score").value = hero.getScore();
       document.getElementById(trap1.id).innerHTML = trap1.builtImg();
       document.getElementById(trap2.id).innerHTML = trap2.builtImg();
       document.getElementById(trap3.id).innerHTML = trap3.builtImg();
@@ -123,23 +129,50 @@
       if (hero.left >= (window.innerWidth - hero.width)){
           hero.moveLeft();
       }
-          built()
+          built();
+      checkIntersectGame();
+
   }
-
   let hero = new pacman();
-  let trap1 = new trap(200, 200, "trap1", 0);
-  let trap2 = new trap(400, 500, "trap2", 0);
-  let trap3 = new trap(1200, 300, "trap3", 0);
-  let heart1 = new trap(200, 700, "heart1", 1);
-  let heart2 = new trap(1500, 700, "heart2", 1);
-  let heart3 = new trap(1300, 100, "heart3", 1);
+  let trap1 = new trap(Math.round(Math.random() * (window.innerWidth - 50)), Math.round(Math.random() * (window.innerHeight - 50)), "trap1", 0, -4);
+  let trap2 = new trap(Math.round(Math.random() * (window.innerWidth - 50)), Math.round(Math.random() * (window.innerHeight - 50)), "trap2", 0, -4);
+  let trap3 = new trap(Math.round(Math.random() * (window.innerWidth - 50)), Math.round(Math.random() * (window.innerHeight - 50)), "trap3", 0, -4);
+  let heart1 = new trap(Math.round(Math.random() * (window.innerWidth - 50)), Math.round(Math.random() * (window.innerHeight - 50)), "heart1", 1, 1);
+  let heart2 = new trap(Math.round(Math.random() * (window.innerWidth - 50)), Math.round(Math.random() * (window.innerHeight - 50)), "heart2", 1, 1);
+  let heart3 = new trap(Math.round(Math.random() * (window.innerWidth - 50)), Math.round(Math.random() * (window.innerHeight - 50)), "heart3", 1, 1);
+  let listItem = [trap1, trap2, trap3, heart1, heart2, heart3];
+  let count = 1;
   built();
-
-  // Bước 8: Nếu xe đâm phải chướng ngại vật thì game sẽ kết thúc
-  // Bước 11: Nếu xe đi qua 1 phần thưởng thì cộng điểm
-
-
-
+  function checkIntersect1D(ele1min, ele1max, ele2min, ele2max,){
+      let l1 = (ele1max - ele1min) + (ele2max - ele2min);
+      let ltotal = Math.max(ele1max, ele2max) - Math.min(ele1min, ele2min);
+      return l1 >= ltotal;
+  }
+  function checkIntersect2D(ele1xmin, ele1xmax, ele1ymin, ele1ymax, ele2xmin, ele2xmax, ele2ymin, ele2ymax){
+      let booX = checkIntersect1D(ele1xmin, ele1xmax, ele2xmin, ele2xmax);
+      let booY = checkIntersect1D(ele1ymin, ele1ymax, ele2ymin, ele2ymax);
+      return booX && booY;
+  }
+  function checkIntersectGame(){
+      for (let i = 0; i < listItem.length; i++){
+          if (listItem[i].available == true) {
+              let boo = checkIntersect2D(hero.left, hero.left + hero.width, hero.top, hero.top + hero.height, listItem[i].xPosition, listItem[i].xPosition + listItem[i].width, listItem[i].yPosition, listItem[i].yPosition + listItem[i].height);
+              if (boo) {
+                  listItem[i].available = false;
+                  hero.setScore(listItem[i].score);
+                  setTimeout(function (){checkWin()} , 50);
+              }
+          }
+      }
+  }
+  function checkWin(){
+      if (hero.getScore() == 3){
+          alert("Thắng rồi nghe");
+      }
+      if (hero.getScore() < 0){
+          alert("Giậm shit mợ gòi");
+      }
+  }
 </script>
 </body>
 </html>
