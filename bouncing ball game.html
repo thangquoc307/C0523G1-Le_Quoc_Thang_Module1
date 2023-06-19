@@ -6,6 +6,7 @@
 </head>
 <body onkeydown="move(event)">
 <input id="show" style="width: 50px; height: 50px; font-size: 30px; text-align: center">
+<input id="speed" style="width: 200px; height: 50px; font-size: 30px; text-align: center">
 <button onclick="start()" style="width: 50px; height: 25px; text-align: center">Start</button>
 <br>
 <canvas id="canvas" width="1000px" height="700px" style="border: black 1px solid"></canvas>
@@ -15,7 +16,7 @@
       this.x = x;
       this.y = y;
       this.r = r;
-      this.speed = 2.5;
+      this.speed = 3.5;
       this.vector = [(Math.random() - 0.5) * 2 * this.speed, -Math.random() * this.speed];
       this.score = 0;
     }
@@ -32,6 +33,11 @@
     padHit(){
       this.vector[1] = -Math.abs(this.vector[1]);
       this.score++;
+    }
+
+    setVector(){
+        this.vector = [(Math.random() - 0.5) * 2 * this.speed, -Math.random() * this.speed];
+
     }
   }
   class pad{
@@ -63,6 +69,7 @@
     canvas.fill();
 
     document.getElementById("show").value = myBall.score;
+    document.getElementById("speed").value = "Speed: " + myBall.speed.toFixed(1);
 
   }
   function move(event){
@@ -92,6 +99,8 @@
       }
       if (myBall.x >= myPad.x && myBall.x <= myPad.x + myPad.width && Math.abs(myPad.y - myBall.y) < myBall.r) {
         myBall.padHit();
+        myBall.speed += 0.5;
+        myBall.setVector();
       }
       if (myBall.y > ctx.height) {
         startGame = false;
