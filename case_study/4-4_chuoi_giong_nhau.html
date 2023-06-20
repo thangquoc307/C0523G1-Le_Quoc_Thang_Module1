@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-4_chuoi_giong_nhau</title>
+</head>
+<body>
+<script>
+  let inputText1 = prompt("Nhập chuỗi 1");
+  let inputText2 = prompt("Nhập chuỗi 2");
+  let text1 = inputText1.split("");
+  let text2 = inputText2.split("");
+  list = [];
+  for (let i = 0; i < text1.length; i++){
+    for (j = 0; j < text2.length; j++){
+      if (text1[i] == text2[j]){
+        list.push(text1[i]);
+        text2.splice(j, 1);
+      }
+    }
+  }
+  document.write("Chuỗi A: " + inputText1 + "<br>");
+  document.write("Chuỗi B: " + inputText2 + "<br>");
+  document.write("Chuỗi ký tự chung: " + list);
+</script>
+</body>
+</html>

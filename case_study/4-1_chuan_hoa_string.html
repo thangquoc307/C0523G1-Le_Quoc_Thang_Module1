@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-1_chuan_hoa_string</title>
+</head>
+<body>
+<script>
+    let text = prompt("Nhập vào chuỗi ký tự");
+    let lower = text.toLowerCase();
+    let upper = text.toUpperCase();
+    let textForm = upper[0];
+    for (let i = 1; i < text.length; i++){
+        if(text[i-1] == " "){
+            if(text[i] != " "){
+                textForm += upper[i];
+            }
+        }else {
+            textForm += lower[i];
+        }
+    }
+    document.write("Chữ chuẩn hóa : " + textForm + "<br>");
+    textArray = textForm.split(" ");
+    let index = 0;
+    let value = textArray[0].length;
+    for (let i = 0; i < textArray.length; i++){
+        if (value < textArray[i].length){
+            value = textArray[i].length;
+            index = i;
+        }
+    }
+    document.write("Chữ dài nhất : " + textArray[index]);
+
+
+</script>
+</body>
+</html>
