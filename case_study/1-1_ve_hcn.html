@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-1_ve_hinh_chu_nhat</title>
+</head>
+<body>
+<div id="show"></div>
+<script>
+    let w = +prompt("nhập chiều dài HCN");
+    let h = +prompt("nhập chiều cao HCN");
+    let data = "";
+    for (let i = 0; i < h; i++){
+        for (let j = 0; j < w; j++){
+            if (i == 0 || i == h - 1 || j == 0 || j == w - 1){
+                data += "<span style='color: black'>*<\span>";
+            }else {
+                data += "<span style='color: white'>*<\span>";
+            }
+        }
+        data += "<br>";
+    }
+    document.getElementById("show").innerHTML = data;
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-1_xay_dung_mang</title>
+</head>
+<body>
+<script>
+  function createArray(){
+    let n = +prompt("nhập vào độ dài mảng 1 chiều");
+    let a = [];
+    for(let i = 0; i < n; i++){
+      a.push(Math.round(Math.random()*10));
+    }
+    return a;
+  }
+  function prefixSum(a){
+    let b = [];
+    for (let i = 0; i < a.length; i++){
+      let sum = 0;
+      for (let j = 0; j <= i; j++){
+        sum += a[j];
+      }
+      b.push(sum);
+    }
+    return b;
+  }
+  let arrayA = createArray();
+  let arrayB = prefixSum(arrayA);
+  document.write("Mảng A : " + arrayA + "<br>");
+  document.write("Mảng B : " + arrayB);
+</script>
+</body>
+</html>

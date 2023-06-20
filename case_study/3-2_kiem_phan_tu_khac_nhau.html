@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-2_kiem_phan_tu_khac_nhau</title>
+</head>
+<body>
+<script>
+  function createArray(n){
+    let a = [];
+    for(let i = 0; i < n; i++){
+      a.push(Math.round(Math.random()*10));
+    }
+    return a;
+  }
+
+  let arrayA = createArray(5);
+  let arrayB = createArray(8);
+  document.write("Mảng A : " + arrayA + "<br>");
+  document.write("Mảng B : " + arrayB + "<br>");
+
+  let arrayC = [];
+  for (let i = 0; i < arrayB.length; i++){
+    let count = 0;
+    for (let j = 0; j < arrayA.length; j++){
+      if (arrayB[i] == arrayA[j]){
+        count++;
+      }
+    }
+    if (count == 0) {
+      arrayC.push(arrayB[i]);
+    }
+  }
+  document.write("Mảng C : " + arrayC);
+
+
+
+</script>
+</body>
+</html>

@@ -5,9 +5,17 @@
     <title>replace string</title>
 </head>
 <body>
+<div style="height: 500px; background: blue" onmousemove="showCoordinates(event)">
+
+</div>
+<p>Tọa độ X: <span id="x"></span> - Tọa độ Y: <span id="y"></span></p>
 <script>
-    let a = new Array(5);
-    alert(a)
+    function showCoordinates(e){
+        var x = e.clientX;
+        var y = e.clientY;
+        document.getElementById("x").innerHTML = x;
+        document.getElementById("y").innerHTML = y;
+    }
 </script>
 </body>
 </html>

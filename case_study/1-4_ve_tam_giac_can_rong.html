@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1-4_ve_tam_giac_can_rong</title>
+</head>
+<body>
+<div id="show"></div>
+<script>
+  let h = +prompt("Nhập chiều cao");
+  let data = "";
+  for (let i = 0; i < h ;i++){
+    for (let j = 0; j < h * 2 - 1; j++){
+      if (j == h - 1 + i || j == h - 1 - i || i == h - 1){
+        data += "<span style='color: black'>*</span>";
+      }else {
+        data += "<span style='color: white'>*</span>";
+      }
+    }
+    data += "<br>"
+  }
+  document.getElementById("show").innerHTML = data;
+</script>
+</body>
+</html>

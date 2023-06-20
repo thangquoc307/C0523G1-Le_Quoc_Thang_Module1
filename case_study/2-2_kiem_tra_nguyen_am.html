@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-2_kiem_tra_nguyen_am</title>
+</head>
+<body>
+<script>
+  while (true) {
+    text = prompt("xin nhập vào 1 chữ cái (hoa thường gì cũng được hĩ)")
+    textLower = text.toLowerCase();
+    switch (textLower) {
+      case "u":
+      case "e":
+      case "o":
+      case "a":
+      case "i":
+        alert(text + " là nguyên âm");
+        break;
+      default:
+        alert(text + " là phụ âm");
+    }
+  }
+</script>
+</body>
+</html>

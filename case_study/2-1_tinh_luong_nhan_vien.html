@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-1_tinh_luong_nhan_vien</title>
+  <style>
+    td, th{border: black 1px solid}
+    table{border-collapse: collapse}
+  </style>
+</head>
+<body>
+<table id="data">
+  <tr>
+    <th style="width: 200px">Tên nhân viên</th>
+    <th style="width: 250px">Lương hợp đồng</th>
+    <th style="width: 100px">%Thuế thu nhập</th>
+    <th style="width: 250px">Thuế thu nhập</th>
+    <th style="width: 200px">lương thực nhận</th>
+  </tr>
+</table>
+<button onclick="add()" style="width: 100px">add</button>
+<script>
+  function add(){
+    let name = prompt("Xin nhập vào tên nhân viên");
+    let currency = +prompt("xin nhập vào số lương");
+    let i = 0;
+    if (currency >= 15000000){
+      i = 0.2;
+    }else if (currency >= 7000){
+      i = 0.1;
+    }else {
+      i = 0.05;
+    }
+    let dataI = i * 100 + "%";
+    let tax = currency * i;
+    let salary = currency - tax;
+
+    data = `<tr>
+<td>${name}</td>
+<td>${currency}</td>
+<td>${dataI}</td>
+<td>${tax}</td>
+<td>${salary}</td>
+</tr>`
+  document.getElementById("data").innerHTML += data;
+  }
+
+
+</script>
+</body>
+</html>
