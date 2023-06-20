@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-1_tinh_tong_so_chan_trong_ma_tran</title>
+</head>
+<body>
+<script>
+  let n = +prompt("Nhập chiều cao ma trận");
+  let m = +prompt("Nhập chiều dài ma trận");
+  let array = [];
+
+  for (let i = 0; i < n; i++){
+    array[i] = [];
+    for (let j = 0; j < m; j++){
+      array[i][j] = Math.round(Math.random() * 100);
+    }
+  }
+  document.write("Mảng : <br>");
+
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array[i].length; j++){
+      document.writeln(array[i][j]);
+    }
+    document.write("<br>")
+  }
+  let sum = 0;
+
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array[i].length; j++){
+      if (array[i][j]%2 == 0){
+       sum += array[i][j];
+      }
+    }
+  }
+  document.write("Sum even number : " + sum);
+
+</script>
+</body>
+</html>

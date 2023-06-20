@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6-1_ve_so</title>
+  <style>
+    input{width: 50px; height: 50px; font-size: 30px; text-align: center}
+    button{height: 50px}
+  </style>
+</head>
+<body>
+<h2>Vé số !!! người không chơi là người không bao giờ thắng</h2>
+<table id="show">
+</table>
+<br>
+<br>
+<button onclick="add()">Thêm 1 vé, cánh cửa đổi đời thêm rộng mở</button>
+<button onclick="result()">Xổ đê !!!</button>
+<h1 id="result"></h1>
+<h4 id="detail"></h4>
+<script>
+let list = [];
+let count = 0;
+let rangeRandom = 99;
+let alertResult = "";
+
+data = "";
+function add(){
+  if (count >= 4){
+    alert("Nghiện ít thôi");
+  }else {
+    data += `<tr>
+            <td><input type="number" onchange="update(this.id)" id="${count},0"></td>
+            <td><input type="number" onchange="update(this.id)" id="${count},1"></td>
+            <td><input type="number" onchange="update(this.id)" id="${count},2"></td>
+            <td><input type="number" onchange="update(this.id)" id="${count},3"></td>
+            <td><input type="number" onchange="update(this.id)" id="${count},4"></td>
+            <td><input type="number" onchange="update(this.id)" id="${count},5"></td>
+            <td><button onclick="random(${count})">Lấy thông điệp vũ trụ</button></td>
+           </tr>`
+    document.getElementById("show").innerHTML = data;
+    count++;
+    list.push([]);
+    updateValue();
+  }
+}
+function update(id){
+  let arr = id.split(",");
+  let i = +arr[0];
+  let j = +arr[1];
+  list[i][j] = document.getElementById(id).value;
+}
+function updateValue(){
+    for (let i = 0; i < list.length; i++){
+        for (let j = 0; j < list[i].length; j++){
+            document.getElementById(i + "," + j).value = list[i][j];
+        }
+    }
+}
+function result(){
+    let arr = [];
+    for (let i = 0; i < 6; i ++){
+        arr.push(Math.round(Math.random() * rangeRandom))
+    }
+    document.getElementById("result").innerHTML = "Kết quả xổ số : " + arr.join(" ")
+    for (let i = 0; i < list.length; i++){
+        let listResult = "";
+        for (let j = 0; j < list[i].length; j++){
+            if (list[i][j] == arr[j]){
+                listResult += "1";
+            }else {
+                listResult += "0";
+            }
+        }
+        switch (listResult){
+            case "111111":
+                alertResult += ("Vé thứ " + i + " : đạt giải nhất");
+                break;
+            case "011111":
+                alertResult += "Vé thứ " + i + " : đạt giải nhì";
+                break;
+            case "000111":
+            case "001111":
+            case "010111":
+            case "011111":
+            case "100111":
+            case "101111":
+            case "010111":
+                alertResult += "Vé thứ " + i + " : đạt khuyến khích";
+                break;
+            default:
+                alertResult += "Vé thứ " + i + " : trật mợ rồi nhọ vãi";
+        }
+        alertResult += "<br>";
+    }
+    document.getElementById("detail").innerHTML = alertResult
+}
+function random(id){
+    for(let i = 0; i < 6; i++){
+        let value = Math.round(Math.random()*rangeRandom);
+        list[id][i] = value;
+        document.getElementById(id + "," + i).value = value;
+    }
+}
+</script>
+</body>
+</html>

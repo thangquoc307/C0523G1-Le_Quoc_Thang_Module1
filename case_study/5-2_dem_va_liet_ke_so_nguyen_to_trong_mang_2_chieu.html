@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>5-2_dem_va_liet_ke_so_nguyen_to_trong_mang_2_chieu</title>
+</head>
+<body>
+<script>
+  let n = +prompt("Nhập chiều cao ma trận");
+  let m = +prompt("Nhập chiều dài ma trận");
+  let array = [];
+
+  for (let i = 0; i < n; i++){
+    array[i] = [];
+    for (let j = 0; j < m; j++){
+      array[i][j] = Math.round(2 + Math.random() * 98);
+    }
+  }
+  document.write("Mảng : <br>");
+
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array[i].length; j++){
+      document.writeln(array[i][j]);
+    }
+    document.write("<br>");
+  }
+
+  list = [];
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array[i].length; j++){
+      let count = 0
+      for (let x = 2; x < array[i][j]/2; x++){
+        if (array[i][j]%x == 0){
+          count++;
+        }
+      }
+      if (count == 0){
+        list.push(array[i][j]);
+      }
+    }
+  }
+  document.write("Các số nguyên tố có trong mảng : " + list);
+</script>
+</body>
+</html>

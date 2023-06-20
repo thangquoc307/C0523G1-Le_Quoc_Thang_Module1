@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-3_tim_gia_tri_nho_nhat_lon_nhat_trong_mang</title>
+</head>
+<body>
+<script>
+  let n = +prompt("Nhập chiều cao ma trận");
+  let m = +prompt("Nhập chiều dài ma trận");
+  let array = [];
+
+  for (let i = 0; i < n; i++){
+    array[i] = [];
+    for (let j = 0; j < m; j++){
+      array[i][j] = Math.round(Math.random() * 100);
+    }
+  }
+  document.write("Mảng : <br>");
+
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array[i].length; j++){
+      document.writeln(array[i][j]);
+    }
+    document.write("<br>");
+  }
+
+  let min = array[0][0];
+  let max = array[0][0];
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array[i].length; j++){
+      if (min > array[i][j]){
+        min = array[i][j];
+      }
+      if (max < array[i][j]){
+        max = array[i][j];
+      }
+    }
+  }
+  document.write("Giá trị lớn nhất trong mảng là : " + max + "<br>");
+  document.write("Giá trị nhỏ nhất trong mảng là : " + min + "<br>");
+</script>
+</body>
+</html>
