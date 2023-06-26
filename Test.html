@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>replace string</title>
+    <title>Title</title>
 </head>
 <body>
 <script>
-let test = "nnnnnoo"
-alert(/n{4,}/ig.test(test))
+    while (true){
+        let date = prompt("nhập ngày tháng năm");
+        checkDate(date);
+    }
+    function checkDate(date){
+        let arr = date.match(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/);
+        if(arr != null){
+            let edata = arr.toString().split("/");
+            alert(arr)
+            alert(edata)
+            // if (+data[0] <= 31 && +data[1] <= 12){
+            return alert("true");
+            // }
+        }
+        return alert("false");
+    }
 </script>
-
 </body>
 </html>

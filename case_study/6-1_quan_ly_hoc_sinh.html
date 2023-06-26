@@ -13,12 +13,15 @@
         background-color: rgba(100, 100, 100, 0.5);
         border: none;
         margin-bottom: 20px;
+        transition-duration: 800ms;
+
     }
     button:hover{
         scale: 1.1;
         color: black;
         background-color: rgba(255, 255, 255, 0.5);
         border: black solid 1px;
+        transition-duration: 800ms;
     }
     td, th{
         border: solid black 1px;
@@ -40,9 +43,9 @@
 <script>
 let dataArr = [
                 ["HV-0001", "Mai Cơn Chắc Sân", "C0523G1", "sansi@gmail.com", "17/11/2011", 1],
-                ["HV-0002", "Mai Tài Phén", "C0523G1", "maitai@gmail.com", "11/06/2012", 1],
+                ["HV-0002", "Mai Tài Phén", "C0523G1", "maitai@gmail.com.vn", "11/06/2012", 1],
                 ["HV-0003", "Lê Văn Đỗ Ki", "C0523G1", "levandoki@gmail.com", "07/07/1999", 2],
-                ["HV-0004", "Lê Nin", "C0523G1", "lenin@gmail.com", "14/01/2010", 2],
+                ["HV-0004", "Lê Nin", "C0523G1", "lenin@gmail.com.vn", "14/01/2010", 2],
                 ["HV-0005", "Đỗ Nam Trung", "C0523G1", "trump@gmail.com", "30/02/2014", 3],
 ];
 buildTable();
@@ -82,7 +85,7 @@ function addMember(){
     let email = "";
     while (true){
         email = prompt("Nhập Email");
-        if (email != ""){
+        if (checkEmail(email)){
             break;
         }
         alert("Vui lòng điền Email");
@@ -171,7 +174,7 @@ function editMember(){
     let emailEdit = "";
     while (true){
         emailEdit = prompt("Chỉnh sửa Email", dataArr[ind][3]);
-        if (emailEdit != ""){
+        if (checkEmail(emailEdit)){
             break;
         }
         alert("Vui lòng điền Email");
@@ -244,7 +247,6 @@ function buildTable(){
     document.getElementById("data").innerHTML = dataStr;
 }
 function standardizedName(name){
-    //chuẩn hóa tên viết hoa chữ đầu
     let upper = name.toUpperCase();
     let lower = name.toLowerCase();
     let standard = upper[0];
@@ -282,18 +284,17 @@ function checkFormatCode(text){
     return false
 }
 function checkDate(date){
-    dataDate = date.split("/");
-    if(dataDate.length == 3) {
-        let day = +dataDate[0];
-        let month = +dataDate[1];
-        let year = +dataDate[2];
-        if (!isNaN(day) && !isNaN(month) && !isNaN(year)){
-           if (day%1==0 && month%1==0 && year%1==0 && day<=31 && day>0 && month<=12 && month>0 && year<=3000 && year>1000) {
-               return true;
-           }
+    let arr = date.match(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/);
+    if(arr != null){
+        let data = arr.toString().split("/");
+        if (+data[0] <= 31 && +data[1] <= 12){
+            return true;
         }
     }
     return false;
+}
+function checkEmail(email){
+    return /.+@.+\.com\.?.*/i.test(email)
 }
 </script>
 </body>
