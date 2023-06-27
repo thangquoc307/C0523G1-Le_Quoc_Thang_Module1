@@ -6,9 +6,25 @@
 </head>
 <body>
 <script>
-  let n = +prompt("Nhập chiều cao ma trận");
-  let m = +prompt("Nhập chiều dài ma trận");
-  let array = [];
+    function checkNumber(text){
+        let n = 0;
+        while (true){
+            n = prompt("Nhập chiều " + text + " ma trận");
+            if(/^-?[0-9]+$/.test(n)){
+                n = +n;
+                if (n > 0) {
+                    break;
+                }
+                alert("Nhập số âm rồi ba");
+                continue;
+            }
+            alert("Thứ bạn nhập phải số đâu, nhập lại cái");
+        }
+        return n;
+    }
+    let n = checkNumber("dài");
+    let m = checkNumber("cao");
+    let array = [];
 
   for (let i = 0; i < n; i++){
     array[i] = [];
@@ -16,8 +32,8 @@
       array[i][j] = Math.round(Math.random() * 100);
     }
   }
-  document.write("Mảng : <br>");
 
+  document.write("Mảng : <br>");
   for (let i = 0; i < array.length; i++){
     for (let j = 0; j < array[i].length; j++){
       document.writeln(array[i][j]);

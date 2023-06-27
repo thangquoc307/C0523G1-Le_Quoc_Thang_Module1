@@ -6,20 +6,16 @@
 </head>
 <body>
 <script>
-  text = prompt("Nhập chuỗi ký tự");
-  array = [text[0]];
-  for (let i = 0; i < text.length; i++){
-    let count = 0;
-    for (let j = 0; j < array.length; j++){
-      if(text[i] == array[j]){
-        count++;
-      }
+    while (true) {
+        text = prompt("Nhập chuỗi ký tự");
+        array = [];
+        for (let i = 0; i < text.length; i++) {
+            if (!array.includes(text[i])) {
+                array.push(text[i]);
+            }
+        }
+        alert("Các ký tự có trong chuỗi " + text + " là : " + array);
     }
-    if (count == 0){
-      array.push(text[i]);
-    }
-  }
-  alert("Các ký tự có trong chuỗi " + text + " là : " + array);
 </script>
 </body>
 </html>

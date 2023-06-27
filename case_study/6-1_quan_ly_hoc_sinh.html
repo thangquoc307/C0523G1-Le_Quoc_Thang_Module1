@@ -14,7 +14,7 @@
         border: none;
         margin-bottom: 20px;
         transition-duration: 800ms;
-        animation: startTable 3s;
+        animation: startTable 2s;
     }
     @keyframes startTable {
         from{
@@ -28,15 +28,15 @@
         color: black;
         background-color: rgba(255, 255, 255, 0.5);
         border: black solid 1px;
-        transition-duration: 800ms;
+        transition-duration: 500ms;
     }
     td, th{
         border: solid black 1px;
-        animation: startTable 3s;
+        animation: startTable 2s;
     }
     tr:nth-child(even){
         background-color: lightgrey;
-        animation: startTable 3s;
+        animation: startTable 2s;
 
     }
     #data{
@@ -45,15 +45,20 @@
         border-collapse: collapse;
     }
     table{
-        animation: startTable 3s;
+        animation: startTable 2s;
+    }
+    .buttonAction{
+        width: 60px;
+        height: 40px;
     }
   </style>
 </head>
 <body>
-<div style="display: inline-block">
-<button onclick="addMember()">Add</button>
-<button onclick="editMember()">Edit</button>
-<button onclick="delMember()">Delete</button>
+<div style="display: inline-block" onmouseleave="action(false)">
+        <button onmouseover="action(true)">Action</button>
+        <button onclick="addMember()" class="buttonAction" style="display: none">Add</button>
+        <button onclick="editMember()" class="buttonAction" style="display: none">Edit</button>
+        <button onclick="delMember()" class="buttonAction" style="display: none">Delete</button>
 </div>
 <table id="data">
 </table>
@@ -63,9 +68,21 @@ let dataArr = [
                 ["HV-0002", "Mai Tài Phén", "C0523G1", "maitai@gmail.com.vn", "11/06/2012", 1],
                 ["HV-0003", "Lê Văn Đỗ Ki", "C0523G1", "levandoki@gmail.com", "07/07/1999", 2],
                 ["HV-0004", "Lê Nin", "C0523G1", "lenin@gmail.com.vn", "14/01/2010", 2],
-                ["HV-0005", "Đỗ Nam Trung", "C0523G1", "trump@gmail.com", "30/02/2014", 3],
+                ["HV-0005", "Đỗ Nam Trung", "C0523G1", "trump@gmail.com", "28/02/2014", 3],
 ];
 buildTable();
+function action(boo){
+    let element = document.getElementsByClassName("buttonAction");
+    if(boo){
+        for (let i = 0; i < element.length; i++){
+            element[i].style.display = "inline-block";
+        }
+    }else {
+        for (let i = 0; i < element.length; i++){
+            element[i].style.display = "none";
+        }
+    }
+}
 function addMember(){
     let code = "";
     while (true) {
