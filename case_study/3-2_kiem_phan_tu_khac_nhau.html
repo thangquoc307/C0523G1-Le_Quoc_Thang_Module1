@@ -13,28 +13,18 @@
     }
     return a;
   }
-
-  let arrayA = createArray(5);
-  let arrayB = createArray(8);
+  let arrayA = createArray(15);
+  let arrayB = createArray(18);
   document.write("Mảng A : " + arrayA + "<br>");
   document.write("Mảng B : " + arrayB + "<br>");
 
   let arrayC = [];
-  for (let i = 0; i < arrayB.length; i++){
-    let count = 0;
-    for (let j = 0; j < arrayA.length; j++){
-      if (arrayB[i] == arrayA[j]){
-        count++;
+  for (let i = 0; i < arrayB.length; i++) {
+          if (!arrayA.includes(arrayB[i])) {
+              arrayC.push(arrayB[i]);
       }
-    }
-    if (count == 0) {
-      arrayC.push(arrayB[i]);
-    }
   }
   document.write("Mảng C : " + arrayC);
-
-
-
 </script>
 </body>
 </html>

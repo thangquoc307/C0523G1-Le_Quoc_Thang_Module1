@@ -14,7 +14,14 @@
         border: none;
         margin-bottom: 20px;
         transition-duration: 800ms;
-
+        animation: startTable 3s;
+    }
+    @keyframes startTable {
+        from{
+            color: white;
+            background-color: white;
+            border: white;
+        }
     }
     button:hover{
         scale: 1.1;
@@ -25,9 +32,20 @@
     }
     td, th{
         border: solid black 1px;
+        animation: startTable 3s;
     }
     tr:nth-child(even){
         background-color: lightgrey;
+        animation: startTable 3s;
+
+    }
+    #data{
+        border: 1px solid black;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table{
+        animation: startTable 3s;
     }
   </style>
 </head>
@@ -37,9 +55,8 @@
 <button onclick="editMember()">Edit</button>
 <button onclick="delMember()">Delete</button>
 </div>
-<table id="data" style="border: 1px solid black; width: 100%; border-collapse: collapse">
+<table id="data">
 </table>
-
 <script>
 let dataArr = [
                 ["HV-0001", "Mai Cơn Chắc Sân", "C0523G1", "sansi@gmail.com", "17/11/2011", 1],

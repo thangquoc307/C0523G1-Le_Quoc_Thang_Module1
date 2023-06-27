@@ -22,7 +22,15 @@
 <script>
   function add(){
     let name = prompt("Xin nhập vào tên nhân viên");
-    let currency = +prompt("xin nhập vào số lương");
+    let currency = 0;
+    while (true){
+      currency = prompt("xin nhập vào số lương");
+      if (/^[0-9]+$/.test(currency)){
+        currency = +currency;
+        break;
+      }
+      alert("Bạn nhập không phải số");
+    }
     let i = 0;
     if (currency >= 15000000){
       i = 0.2;

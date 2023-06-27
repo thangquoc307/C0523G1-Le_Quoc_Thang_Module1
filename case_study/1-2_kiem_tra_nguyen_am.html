@@ -7,7 +7,11 @@
 <body>
 <script>
   while (true) {
-    text = prompt("xin nhập vào 1 chữ cái (hoa thường gì cũng được hĩ)")
+    text = prompt("xin nhập vào 1 chữ cái (hoa thường gì cũng được hĩ)");
+    if(!/^[a-z]$/i.test(text)){
+        alert("Thứ bạn nhập phải 1 chữ đâu")
+        continue;
+        }
     textLower = text.toLowerCase();
     switch (textLower) {
       case "u":

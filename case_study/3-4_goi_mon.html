@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <title>3-5_goi_mon</title>
   <style>
-    td{border: black 1px solid}
-    table{border-collapse: collapse}
-    button{height: 35px; width: 30px}
+    td{
+        border: black 1px solid;
+    }
+    table{
+        border-collapse: collapse
+    }
+    button{
+        height: 35px;
+        width: 30px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #5f6062;
+        font-size: 20px;
+        font-weight: inherit;
+    }
+    button:hover{
+        background-color: green;
+    }
+    img{
+        border-radius: 20px;
+        vertical-align: center;
+    }
+    input{
+        border: none;
+    }
   </style>
 </head>
 <body>
@@ -33,14 +56,14 @@ function createMenu() {
              <td>${listImg[i]}</td>
              <td style="width: 150px; text-align: center">${listName[i]}</td>
              <td style="width: 150px; text-align: center">${listValueShow[i]}</td>
-             <td style="width: 150px; text-align: center">
+             <td style="width: 200px; text-align: center">
              <button onclick="changeCount([1, ${i}])">+</button>
-             <input type="number" disabled value="${listCount[i]}" style="width: 30px; height: 35px; text-align: center; font-size: 25px">
+             <input type="number" disabled value="${listCount[i]}" style="width: 75px; height: 35px; text-align: center; font-size: 25px">
              <button onclick="changeCount([-1, ${i}])">-</button>
 </td>`
     data += "</tr>";
   }
-  data += `<tr><td colspan='5' style='height: 50px; text-align: right; font-weight: bold'>Tổng cộng : ${currency()}${"&emsp;"}<button onclick="tinhTien()" style="width: 100px">Thanh toán</button>${"&emsp;"}</td></tr>`
+  data += `<tr><td colspan='5' style='height: 50px; text-align: right; font-weight: bold'>Tổng cộng : ${currency()}${"&emsp;"}<button onclick="tinhTien()" style="width: 200px">Thanh toán</button>${"&emsp;"}</td></tr>`
   document.getElementById("menu").innerHTML = data;
 }
 function changeCount(arr){

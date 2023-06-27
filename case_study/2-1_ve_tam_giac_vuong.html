@@ -7,7 +7,20 @@
 <body>
 <div id="show"></div>
 <script>
-  let n = +prompt("nhập độ dài cạnh tam giác");
+  let n = 0;
+  while (true){
+      n = prompt("Nhập độ dài cạnh tam giác");
+      if(/^-?[0-9]+$/.test(n)){
+          n = +n;
+          if (n > 0) {
+              break;
+          }
+          alert("Nhập số âm rồi ba");
+          continue;
+      }
+      alert("Thứ bạn nhập phải số đâu, nhập lại cái");
+  }
+
   let data = "";
   for (let i = 0; i < n; i++){
     for (let j = 0; j < n; j++){

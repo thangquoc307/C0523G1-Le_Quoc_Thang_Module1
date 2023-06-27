@@ -7,7 +7,19 @@
 <body>
 <div id="show"></div>
 <script>
-  let h = +prompt("Nhập chiều cao");
+  let h = 0;
+  while (true){
+    h = prompt("Nhập chiều cao");
+    if(/^-?[0-9]+$/.test(h)){
+      h = +h;
+      if (h > 0) {
+        break;
+      }
+      alert("Nhập số âm rồi ba");
+      continue;
+    }
+    alert("Thứ bạn nhập phải số đâu, nhập lại cái");
+  }
   let data = "";
   for (let i = 0; i < h ;i++){
     for (let j = 0; j < h * 2 - 1; j++){
