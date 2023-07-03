@@ -26,7 +26,7 @@
     }
     return a;
   }
-  function prefixSum(a){
+  function prefixSum(){
     let b = [];
     for (let i = 0; i < a.length; i++){
       let sum = 0;
@@ -37,6 +37,7 @@
     }
     return b;
   }
+
   let arrayA = createArray();
   let arrayB = prefixSum(arrayA);
   document.write("Mảng A : " + arrayA + "<br>");

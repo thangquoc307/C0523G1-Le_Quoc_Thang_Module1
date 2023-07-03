@@ -13,14 +13,16 @@
     }
     return a;
   }
+
   let arrayA = createArray(15);
   let arrayB = createArray(18);
+
   document.write("Mảng A : " + arrayA + "<br>");
   document.write("Mảng B : " + arrayB + "<br>");
 
   let arrayC = [];
   for (let i = 0; i < arrayB.length; i++) {
-          if (!arrayA.includes(arrayB[i])) {
+          if (!arrayA.includes(arrayB[i]) && !arrayC.includes(arrayB[i])) {
               arrayC.push(arrayB[i]);
       }
   }
